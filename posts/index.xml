@@ -15,5 +15,15 @@
       <description></description>
     </item>
     
+    <item>
+      <title>Rest_api</title>
+      <link>/posts/rest-api/</link>
+      <pubDate>Mon, 07 Sep 2020 00:12:11 +0900</pubDate>
+      
+      <guid>/posts/rest-api/</guid>
+      <description>참고 동영상: https://youtu.be/RP_f5dMoHFc
+REST를 구성하는 스타일  client-server stateless cache uniform interface  제약 조건  identification of resource → resource가 uri로 표현되면 된다. mainpulation of resource through representations → resource를 변경할 때 http message에 표현을 담아서 처리하면 된다. self-descriptive messages  확장 가능한 커뮤니케이션이 가능하도록 함   hypermedia as the engine of application state (HATEOAS: application 상태는 Hyperlink를 이용해 전이되어야한다.)  application 상태 전이의 late binding, 어디서 어디로 전이가 가능한지 미리 결정되지 않는다.</description>
+    </item>
+    
   </channel>
 </rss>
