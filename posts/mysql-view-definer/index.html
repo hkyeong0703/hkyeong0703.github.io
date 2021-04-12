@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en" data-theme=""><head>
+    <title>  | Mysql View Definer </title>
+
+    
+    <meta charset="utf-8"><meta name="generator" content="Hugo 0.82.0" /><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+    <meta name="description" content="">
+    
+    <link rel="stylesheet"
+          href="/css/style.min.12394ad1dd77abc5f2b8ac9fff89a6f77f11f1db9126284cdea41236936f5c56.css"
+          integrity="sha256-EjlK0d13q8XyuKyf/4mm938R8duRJihM3qQSNpNvXFY="
+          crossorigin="anonymous"
+          type="text/css">
+    
+    <link rel="stylesheet"
+        href="/css/markupHighlight.min.f798cbda9aaa38f89eb38be6414bd082cfd71a6780375cbf67b6d2fb2b96491e.css"
+        integrity="sha256-95jL2pqqOPies4vmQUvQgs/XGmeAN1y/Z7bS&#43;yuWSR4="
+        crossorigin="anonymous"
+        type="text/css">
+    
+    <link rel="stylesheet" 
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" 
+    integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" 
+    crossorigin="anonymous" />
+
+    
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+
+    <link rel="canonical" href="/posts/mysql-view-definer/">
+
+    
+    
+    
+    
+    <script type="text/javascript"
+            src="/js/anatole-header.min.0c05c0a90d28c968a1cad4fb31abd0b8e1264e788ccefed022ae1d3b6f627514.js"
+            integrity="sha256-DAXAqQ0oyWihytT7MavQuOEmTniMzv7QIq4dO29idRQ="
+            crossorigin="anonymous"></script>
+
+
+    
+        
+        
+        <script type="text/javascript"
+                src="/js/anatole-theme-switcher.min.47918423907d577c1f04c2fd28730186eca486fb18e52fc882c3c7ad5f2540b1.js"
+                integrity="sha256-R5GEI5B9V3wfBML9KHMBhuykhvsY5S/IgsPHrV8lQLE="
+                crossorigin="anonymous"></script>
+    
+    <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Mysql View Definer"/>
+<meta name="twitter:description" content="https://dev.mysql.com/doc/refman/8.0/en/create-view.html CREATE [OR REPLACE] [ALGORITHM = {UNDEFINED | MERGE | TEMPTABLE}] [DEFINER = user] [SQL SECURITY { DEFINER | INVOKER }] VIEW view_name [(column_list)] AS select_statement [WITH [CASCADED | LOCAL] CHECK OPTION] django unit test를 진행하는 과정에서 로컬에 세팅한 DB에 있는 view table에서 권한이 없어 select를 못하는 에러가 계속 발생.
+_mysql_exceptions.OperationalError: (1449, &#34;The user specified as a definer (&#39;db_user&#39;@&#39;%&#39;) does not exist&#34;) 이유를 모른채 삽질을 하던 중, 생성 쿼리를 뽑아 봄."/>
+
+
+    
+
+</head>
+<body><div class="sidebar animated fadeInDown ">
+    <div class="logo-title">
+        <div class="title">
+            <img src="/" alt="profile picture">
+            <h3 title=""><a href="/"></a></h3>
+            <div class="description">
+                <p></p>
+            </div>
+        </div>
+    </div>
+    <ul class="social-links">
+        
+    </ul>
+    <div class="footer">
+        <div class="by_farbox">&copy;   2021 </div>
+    </div>
+</div>
+<div class="main">
+    <div class="page-top  animated fadeInDown ">
+    <a role="button" class="navbar-burger" data-target="navMenu" aria-label="menu" aria-expanded="false">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+    </a>
+    <ul class="nav" id="navMenu">
+        
+        
+            
+            <li><a 
+                   href="/"
+                        
+                   title="">Home</a></li>
+        
+            
+            <li><a 
+                   href="/posts/"
+                        
+                   title="">Posts</a></li>
+        
+        
+        
+            <li class="theme-switch-item">
+                <a class="theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+    </ul>
+</div>
+
+    <div class="autopagerize_page_element">
+        <div class="content">
+    <div class="post  animated fadeInDown ">
+        <div class="post-content">
+            
+            <div class="post-title">
+                <h3>Mysql View Definer</h3>
+                
+            </div>
+
+            <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql">https:<span style="color:#f92672">//</span>dev.mysql.com<span style="color:#f92672">/</span>doc<span style="color:#f92672">/</span>refman<span style="color:#f92672">/</span><span style="color:#ae81ff">8</span>.<span style="color:#ae81ff">0</span><span style="color:#f92672">/</span>en<span style="color:#f92672">/</span><span style="color:#66d9ef">create</span><span style="color:#f92672">-</span><span style="color:#66d9ef">view</span>.html
+
+<span style="color:#66d9ef">CREATE</span>
+    [<span style="color:#66d9ef">OR</span> <span style="color:#66d9ef">REPLACE</span>]
+    [ALGORITHM <span style="color:#f92672">=</span> <span style="color:#960050;background-color:#1e0010">{</span>UNDEFINED <span style="color:#f92672">|</span> MERGE <span style="color:#f92672">|</span> TEMPTABLE<span style="color:#960050;background-color:#1e0010">}</span>]
+    [<span style="color:#66d9ef">DEFINER</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">user</span>]
+    [<span style="color:#66d9ef">SQL</span> <span style="color:#66d9ef">SECURITY</span> <span style="color:#960050;background-color:#1e0010">{</span> <span style="color:#66d9ef">DEFINER</span> <span style="color:#f92672">|</span> <span style="color:#66d9ef">INVOKER</span> <span style="color:#960050;background-color:#1e0010">}</span>]
+    <span style="color:#66d9ef">VIEW</span> view_name [(column_list)]
+    <span style="color:#66d9ef">AS</span> select_statement
+    [<span style="color:#66d9ef">WITH</span> [<span style="color:#66d9ef">CASCADED</span> <span style="color:#f92672">|</span> <span style="color:#66d9ef">LOCAL</span>] <span style="color:#66d9ef">CHECK</span> <span style="color:#66d9ef">OPTION</span>]
+</code></pre></div><p>django unit test를 진행하는 과정에서 로컬에 세팅한 DB에 있는 view table에서 권한이 없어 select를 못하는 에러가 계속 발생.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql">_mysql_exceptions.OperationalError: (<span style="color:#ae81ff">1449</span>, <span style="color:#e6db74">&#34;The user specified as a definer (&#39;db_user&#39;@&#39;%&#39;) does not exist&#34;</span>)
+</code></pre></div><p>이유를 모른채 삽질을 하던 중, 생성 쿼리를 뽑아 봄.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#66d9ef">create</span> <span style="color:#66d9ef">definer</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;db_user&#39;</span><span style="color:#f92672">@`%`</span> <span style="color:#66d9ef">view</span> view_name <span style="color:#66d9ef">as</span> select_statement
+</code></pre></div><p>definer가 지정된 상태였다.</p>
+<p>내가 생성 할 시에 따로 설정을 해주지 않아도 기본 세팅으로 definer가 지정된 상태인 것이다.</p>
+<p>로컬 PC에서 unit test용 DB를 생성할 때, mysqldump를 통하여 초기 생성을하는데
+이 과정에서 definer로 지정된 유저가 아닌 다른 유저로 사용되고있기때문에 문제가 되는 것이다.</p>
+<p>이를 해결하기위해 여러 해결책을 찾아보았지만 결론은 2가지였다.</p>
+<ol>
+<li>mysqlpump —skip-definer를 이용</li>
+</ol>
+<p><a href="https://dev.mysql.com/doc/refman/8.0/en/mysqlpump.html#option_mysqlpump_skip-definer">https://dev.mysql.com/doc/refman/8.0/en/mysqlpump.html#option_mysqlpump_skip-definer</a></p>
+<ol start="2">
+<li>mysqldump 이후, sed 명령어를 사용하여 DEFINER 제거</li>
+</ol>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sed -i <span style="color:#e6db74">&#39;&#39;</span> <span style="color:#e6db74">&#39;s/DEFINER=[^*]*\*/\*/g&#39;</span> $sql_file <span style="color:#75715e"># MACOS</span>
+sed -i <span style="color:#e6db74">&#39;s/DEFINER=[^*]*\*/\*/g&#39;</span> $sql_file <span style="color:#75715e"># linux</span>
+</code></pre></div><p>mysqlpump는 mysql 5.7.8 버전부터 사용 가능한 것으로 확인이 되었다. 사용하고 있는 DB 사양 중 이하 버전도 포함이 되어 있기도 하고, 데이터 백업 없이 DDL만 가져오기 때문에 2번 방법을 통해 해결하였다.</p>
+</div>
+        <div class="post-footer">
+            <div class="info">
+                
+                
+            </div>
+        </div>
+
+        
+    </div>
+
+
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript"
+        src="/js/medium-zoom.min.2d6fd0be87fa98f0c9b4dc2536b312bbca48757f584f6ea1f394abc9bcc38fbc.js"
+        integrity="sha256-LW/Qvof6mPDJtNwlNrMSu8pIdX9YT26h85SrybzDj7w="
+        crossorigin="anonymous"></script></body>
+
+</html>
