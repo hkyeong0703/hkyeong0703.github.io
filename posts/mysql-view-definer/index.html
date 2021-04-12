@@ -124,20 +124,20 @@ _mysql_exceptions.OperationalError: (1449, &#34;The user specified as a definer 
                 
             </div>
 
-            <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql">https:<span style="color:#f92672">//</span>dev.mysql.com<span style="color:#f92672">/</span>doc<span style="color:#f92672">/</span>refman<span style="color:#f92672">/</span><span style="color:#ae81ff">8</span>.<span style="color:#ae81ff">0</span><span style="color:#f92672">/</span>en<span style="color:#f92672">/</span><span style="color:#66d9ef">create</span><span style="color:#f92672">-</span><span style="color:#66d9ef">view</span>.html
+            <div class="highlight"><pre class="chroma"><code class="language-sql" data-lang="sql"><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">dev</span><span class="p">.</span><span class="n">mysql</span><span class="p">.</span><span class="n">com</span><span class="o">/</span><span class="n">doc</span><span class="o">/</span><span class="n">refman</span><span class="o">/</span><span class="mi">8</span><span class="p">.</span><span class="mi">0</span><span class="o">/</span><span class="n">en</span><span class="o">/</span><span class="k">create</span><span class="o">-</span><span class="k">view</span><span class="p">.</span><span class="n">html</span>
 
-<span style="color:#66d9ef">CREATE</span>
-    [<span style="color:#66d9ef">OR</span> <span style="color:#66d9ef">REPLACE</span>]
-    [ALGORITHM <span style="color:#f92672">=</span> <span style="color:#960050;background-color:#1e0010">{</span>UNDEFINED <span style="color:#f92672">|</span> MERGE <span style="color:#f92672">|</span> TEMPTABLE<span style="color:#960050;background-color:#1e0010">}</span>]
-    [<span style="color:#66d9ef">DEFINER</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">user</span>]
-    [<span style="color:#66d9ef">SQL</span> <span style="color:#66d9ef">SECURITY</span> <span style="color:#960050;background-color:#1e0010">{</span> <span style="color:#66d9ef">DEFINER</span> <span style="color:#f92672">|</span> <span style="color:#66d9ef">INVOKER</span> <span style="color:#960050;background-color:#1e0010">}</span>]
-    <span style="color:#66d9ef">VIEW</span> view_name [(column_list)]
-    <span style="color:#66d9ef">AS</span> select_statement
-    [<span style="color:#66d9ef">WITH</span> [<span style="color:#66d9ef">CASCADED</span> <span style="color:#f92672">|</span> <span style="color:#66d9ef">LOCAL</span>] <span style="color:#66d9ef">CHECK</span> <span style="color:#66d9ef">OPTION</span>]
+<span class="k">CREATE</span>
+    <span class="p">[</span><span class="k">OR</span> <span class="k">REPLACE</span><span class="p">]</span>
+    <span class="p">[</span><span class="n">ALGORITHM</span> <span class="o">=</span> <span class="err">{</span><span class="n">UNDEFINED</span> <span class="o">|</span> <span class="n">MERGE</span> <span class="o">|</span> <span class="n">TEMPTABLE</span><span class="err">}</span><span class="p">]</span>
+    <span class="p">[</span><span class="k">DEFINER</span> <span class="o">=</span> <span class="k">user</span><span class="p">]</span>
+    <span class="p">[</span><span class="k">SQL</span> <span class="k">SECURITY</span> <span class="err">{</span> <span class="k">DEFINER</span> <span class="o">|</span> <span class="k">INVOKER</span> <span class="err">}</span><span class="p">]</span>
+    <span class="k">VIEW</span> <span class="n">view_name</span> <span class="p">[(</span><span class="n">column_list</span><span class="p">)]</span>
+    <span class="k">AS</span> <span class="n">select_statement</span>
+    <span class="p">[</span><span class="k">WITH</span> <span class="p">[</span><span class="k">CASCADED</span> <span class="o">|</span> <span class="k">LOCAL</span><span class="p">]</span> <span class="k">CHECK</span> <span class="k">OPTION</span><span class="p">]</span>
 </code></pre></div><p>django unit test를 진행하는 과정에서 로컬에 세팅한 DB에 있는 view table에서 권한이 없어 select를 못하는 에러가 계속 발생.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql">_mysql_exceptions.OperationalError: (<span style="color:#ae81ff">1449</span>, <span style="color:#e6db74">&#34;The user specified as a definer (&#39;db_user&#39;@&#39;%&#39;) does not exist&#34;</span>)
+<div class="highlight"><pre class="chroma"><code class="language-sql" data-lang="sql"><span class="n">_mysql_exceptions</span><span class="p">.</span><span class="n">OperationalError</span><span class="p">:</span> <span class="p">(</span><span class="mi">1449</span><span class="p">,</span> <span class="s2">&#34;The user specified as a definer (&#39;db_user&#39;@&#39;%&#39;) does not exist&#34;</span><span class="p">)</span>
 </code></pre></div><p>이유를 모른채 삽질을 하던 중, 생성 쿼리를 뽑아 봄.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#66d9ef">create</span> <span style="color:#66d9ef">definer</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;db_user&#39;</span><span style="color:#f92672">@`%`</span> <span style="color:#66d9ef">view</span> view_name <span style="color:#66d9ef">as</span> select_statement
+<div class="highlight"><pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">create</span> <span class="k">definer</span> <span class="o">=</span> <span class="s1">&#39;db_user&#39;</span><span class="o">@`%`</span> <span class="k">view</span> <span class="n">view_name</span> <span class="k">as</span> <span class="n">select_statement</span>
 </code></pre></div><p>definer가 지정된 상태였다.</p>
 <p>내가 생성 할 시에 따로 설정을 해주지 않아도 기본 세팅으로 definer가 지정된 상태인 것이다.</p>
 <p>로컬 PC에서 unit test용 DB를 생성할 때, mysqldump를 통하여 초기 생성을하는데
@@ -150,8 +150,8 @@ _mysql_exceptions.OperationalError: (1449, &#34;The user specified as a definer 
 <ol start="2">
 <li>mysqldump 이후, sed 명령어를 사용하여 DEFINER 제거</li>
 </ol>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sed -i <span style="color:#e6db74">&#39;&#39;</span> <span style="color:#e6db74">&#39;s/DEFINER=[^*]*\*/\*/g&#39;</span> $sql_file <span style="color:#75715e"># MACOS</span>
-sed -i <span style="color:#e6db74">&#39;s/DEFINER=[^*]*\*/\*/g&#39;</span> $sql_file <span style="color:#75715e"># linux</span>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">sed -i <span class="s1">&#39;&#39;</span> <span class="s1">&#39;s/DEFINER=[^*]*\*/\*/g&#39;</span> <span class="nv">$sql_file</span> <span class="c1"># MACOS</span>
+sed -i <span class="s1">&#39;s/DEFINER=[^*]*\*/\*/g&#39;</span> <span class="nv">$sql_file</span> <span class="c1"># linux</span>
 </code></pre></div><p>mysqlpump는 mysql 5.7.8 버전부터 사용 가능한 것으로 확인이 되었다. 사용하고 있는 DB 사양 중 이하 버전도 포함이 되어 있기도 하고, 데이터 백업 없이 DDL만 가져오기 때문에 2번 방법을 통해 해결하였다.</p>
 </div>
         <div class="post-footer">

@@ -1,27 +1,28 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title></title>
-    <link>/</link>
-    <description>Recent content on </description>
+    <title>hkyeong&#39;s blog</title>
+    <link>https://hkyeong0703.github.io/</link>
+    <description>Recent content on hkyeong&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Mon, 07 Sep 2020 00:12:11 +0900</lastBuildDate><atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    <language>en-us</language>
+    <lastBuildDate>Mon, 07 Sep 2020 00:12:11 +0900</lastBuildDate><atom:link href="https://hkyeong0703.github.io/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Rest_api</title>
-      <link>/posts/rest-api/</link>
+      <link>https://hkyeong0703.github.io/posts/rest-api/</link>
       <pubDate>Mon, 07 Sep 2020 00:12:11 +0900</pubDate>
       
-      <guid>/posts/rest-api/</guid>
+      <guid>https://hkyeong0703.github.io/posts/rest-api/</guid>
       <description>참고 동영상: https://youtu.be/RP_f5dMoHFc
 REST를 구성하는 스타일  client-server stateless cache uniform interface  제약 조건  identification of resource → resource가 uri로 표현되면 된다. mainpulation of resource through representations → resource를 변경할 때 http message에 표현을 담아서 처리하면 된다. self-descriptive messages  확장 가능한 커뮤니케이션이 가능하도록 함   hypermedia as the engine of application state (HATEOAS: application 상태는 Hyperlink를 이용해 전이되어야한다.)  application 상태 전이의 late binding, 어디서 어디로 전이가 가능한지 미리 결정되지 않는다.</description>
     </item>
     
     <item>
       <title>Mysql View Definer</title>
-      <link>/posts/mysql-view-definer/</link>
+      <link>https://hkyeong0703.github.io/posts/mysql-view-definer/</link>
       <pubDate>Thu, 13 Aug 2020 00:17:43 +0900</pubDate>
       
-      <guid>/posts/mysql-view-definer/</guid>
+      <guid>https://hkyeong0703.github.io/posts/mysql-view-definer/</guid>
       <description>https://dev.mysql.com/doc/refman/8.0/en/create-view.html CREATE [OR REPLACE] [ALGORITHM = {UNDEFINED | MERGE | TEMPTABLE}] [DEFINER = user] [SQL SECURITY { DEFINER | INVOKER }] VIEW view_name [(column_list)] AS select_statement [WITH [CASCADED | LOCAL] CHECK OPTION] django unit test를 진행하는 과정에서 로컬에 세팅한 DB에 있는 view table에서 권한이 없어 select를 못하는 에러가 계속 발생.
 _mysql_exceptions.OperationalError: (1449, &amp;#34;The user specified as a definer (&amp;#39;db_user&amp;#39;@&amp;#39;%&amp;#39;) does not exist&amp;#34;) 이유를 모른채 삽질을 하던 중, 생성 쿼리를 뽑아 봄.</description>
     </item>
