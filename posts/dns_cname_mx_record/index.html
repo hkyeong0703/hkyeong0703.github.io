@@ -254,7 +254,7 @@ A.co.kr mail <span class="nv">exchanger</span> <span class="o">=</span> <span cl
 <li>하위 도메인에 대한 CNAME 레코드를 생성하면, 그 하위 도메인에 대해서는 다른 레코드를 생성할 수 없다.</li>
 <li>참고
 <ul>
-<li><a href="https://docs.aws.amazon.com/ko_kr/Route53/latest/DeveloperGuide/ResourceRecordTypes.html#CNAMEFormat">https://docs.aws.amazon.com/ko_kr/Route53/latest/DeveloperGuide/ResourceRecordTypes.html#CNAMEFormat</a></li>
+<li><a href="https://docs.aws.amazon.com/ko_kr/Route53/latest/DeveloperGuide/ResourceRecordTypes.html#CNAMEFormat">CNAME 레코드 형식</a></li>
 <li><a href="https://tools.ietf.org/html/rfc2181">RFC 2181, Clarifications to the DNS </a>Specification, section 10.1</li>
 </ul>
 </li>
@@ -286,12 +286,12 @@ A.co.kr mail <span class="nv">exchanger</span> <span class="o">=</span> <span cl
 <p>이제 해결 방안을 찾아보았다. 3가지정도가 있었다.</p>
 <ol>
 <li>네임 서버를 옮겨 AWS Route53 Hosted Zones을 이용하여 AWS ELB를 A레코드 alias로 등록
-참고: <a href="https://docs.aws.amazon.com/ko_kr/Route53/latest/DeveloperGuide/CreatingHostedZone.html">https://docs.aws.amazon.com/ko_kr/Route53/latest/DeveloperGuide/CreatingHostedZone.html</a>
-<a href="https://docs.aws.amazon.com/ko_kr/Route53/latest/DeveloperGuide/migrate-dns-domain-in-use.html">https://docs.aws.amazon.com/ko_kr/Route53/latest/DeveloperGuide/migrate-dns-domain-in-use.html</a></li>
+참고: <a href="https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/CreatingHostedZone.html">Creating a public hosted zone</a>
+<a href="https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/migrate-dns-domain-in-use.html">Making Route 53 the DNS service for a domain that&rsquo;s in use</a></li>
 <li>AWS ELB에 NLB를 사용하여 고정 ip를 부여하여 A 레코드로 등록
-참고: <a href="https://docs.aws.amazon.com/ko_kr/elasticloadbalancing/latest/network/create-network-load-balancer.html">https://docs.aws.amazon.com/ko_kr/elasticloadbalancing/latest/network/create-network-load-balancer.html</a></li>
+참고: <a href="https://docs.aws.amazon.com/elasticloadbalancing/latest/network/create-network-load-balancer.html">Create a Network Load Balancer</a></li>
 <li>AWS global accelerator 사용
-참고: <a href="https://aws.amazon.com/ko/blogs/korea/new-aws-global-accelerator-for-availability-and-performance/">https://aws.amazon.com/ko/blogs/korea/new-aws-global-accelerator-for-availability-and-performance/</a></li>
+참고: <a href="https://aws.amazon.com/ko/blogs/korea/new-aws-global-accelerator-for-availability-and-performance/">AWS Global Accelerator</a></li>
 </ol>
 <p>주로 AWS를 사용하고있기에 앞으로 유지보수를 위해 1번을 택해 해결하였다.</p>
 <p>Route53에 레코드를 옮기는 과정에서 MX 레코드를 등록한 상태에서 CNAME 레코드를 등록해보았더니 아래 사진과 같은 에러가 노출되고 등록이 불가했다&hellip; <img src="https://hkyeong0703.github.io/posts/images/dns_cname_mx_record_error.png" alt="dns_cname_mx_record_error"></p>
