@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>dns on hkyeong&#39;s blog</title>
-    <link>https://hkyeong0703.github.io/tags/dns/</link>
-    <description>Recent content in dns on hkyeong&#39;s blog</description>
+    <title>도메인 on hkyeong&#39;s blog</title>
+    <link>https://hkyeong0703.github.io/tags/%EB%8F%84%EB%A9%94%EC%9D%B8/</link>
+    <description>Recent content in 도메인 on hkyeong&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 14 Apr 2021 18:15:10 +0900</lastBuildDate><atom:link href="https://hkyeong0703.github.io/tags/dns/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 14 Apr 2021 18:15:10 +0900</lastBuildDate><atom:link href="https://hkyeong0703.github.io/tags/%EB%8F%84%EB%A9%94%EC%9D%B8/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Domain에 CNAME, MX record를 같이 등록하면서 겪은 이슈</title>
       <link>https://hkyeong0703.github.io/posts/dns_cname_mx_record/</link>
