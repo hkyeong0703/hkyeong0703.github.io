@@ -168,7 +168,7 @@ Mail Exchanger Record로 메일이 수신될 위치를 결정하는 Record다. M
 <li>A.co.kr, B.co.kr 모두 AWS에서 route53에서 co.kr에대한 도메인이 구매가 불가능하여, 다른 곳에서 구매한 도메인임.</li>
 <li>A.co.kr의 DNS에는 MX Record가 세팅되어 사용 중임.</li>
 <li>B.co.kr의 DNS에는 CNAME Record에  AWS ELB DNS name이 세팅되어 사용 중임.<br>
-<img src="https://hkyeong0703.github.io/posts/images/dns_cname_mx_Record_route_list.png" alt="dns_cname_mx_Record_route_list"></li>
+<img src="https://hkyeong0703.github.io/posts/images/dns_cname_mx_record_route_list.png" alt="dns_cname_mx_Record_route_list"></li>
 </ul>
 </li>
 <li>
@@ -257,7 +257,7 @@ A.co.kr mail <span class="nv">exchanger</span> <span class="o">=</span> <span cl
 참고: <a href="https://aws.amazon.com/ko/blogs/korea/new-aws-global-accelerator-for-availability-and-performance/">AWS Global Accelerator</a></li>
 </ol>
 <p>주로 AWS를 사용하고있기에 앞으로 유지보수를 위해 1번을 택해 해결하였다.</p>
-<p>Route53에 Record를 옮기는 과정에서 MX Record를 등록한 상태에서 CNAME Record를 등록해보았더니 아래 사진과 같은 에러가 노출되고 등록이 불가했다&hellip; <img src="https://hkyeong0703.github.io/posts/images/dns_cname_mx_Record_error.png" alt="dns_cname_mx_Record_error"></p>
+<p>Route53에 Record를 옮기는 과정에서 MX Record를 등록한 상태에서 CNAME Record를 등록해보았더니 아래 사진과 같은 에러가 노출되고 등록이 불가했다&hellip; <img src="https://hkyeong0703.github.io/posts/images/dns_cname_mx_record_error.png" alt="dns_cname_mx_Record_error"></p>
 <p>모든 서비스에서 등록이 불가하도록 처리가되었다면 삽질을 안했어도 됐을텐데&hellip;<br>
 앞으로 이 기회를 통해 CNAME Record 사용을 최대한 자제할 것 같다.</p>
 </div>
