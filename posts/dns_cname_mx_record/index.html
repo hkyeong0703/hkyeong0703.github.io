@@ -165,57 +165,10 @@ Mail Exchanger Record로 메일이 수신될 위치를 결정하는 레코드다
 <li>
 <p><strong>주어진 상황</strong></p>
 <ul>
-<li>
-<p>A.co.kr, B.co.kr 모두 AWS에서 route53에서 co.kr에대한 도메인이 구매가 불가능하여, 다른 곳에서 구매한 도메인임.</p>
-</li>
-<li>
-<p>A.co.kr의 DNS에는 MX record가 세팅되어 사용 중임.</p>
-</li>
-<li>
-<p>B.co.kr의 DNS에는 CNAME record에  AWS ELB DNS name이 세팅되어 사용 중임.</p>
-<table>
-<thead>
-<tr>
-<th>Record name</th>
-<th>type</th>
-<th>Value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>A.co.kr</td>
-<td>MX</td>
-<td>1 mail.example.com<!-- raw HTML omitted -->5 mail2.example.com<!-- raw HTML omitted -->10 mail3.example.com</td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<table>
-<thead>
-<tr>
-<th>Record name</th>
-<th>type</th>
-<th>Value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>B.co.kr</td>
-<td>CNAME</td>
-<td>xxx.elb.amazoneaws.com</td>
-</tr>
-<tr>
-<td>B.co.kr</td>
-<td>MX</td>
-<td>1 mail9.example.com<!-- raw HTML omitted -->5 mail8.example.com<!-- raw HTML omitted -->10 mail7.example.com</td>
-</tr>
-</tbody>
-</table>
-</li>
+<li>A.co.kr, B.co.kr 모두 AWS에서 route53에서 co.kr에대한 도메인이 구매가 불가능하여, 다른 곳에서 구매한 도메인임.</li>
+<li>A.co.kr의 DNS에는 MX record가 세팅되어 사용 중임.</li>
+<li>B.co.kr의 DNS에는 CNAME record에  AWS ELB DNS name이 세팅되어 사용 중임.<br>
+<img src="https://hkyeong0703.github.io/posts/images/dns_cname_mx_record_route_list.png" alt="dns_cname_mx_record_route_list"></li>
 </ul>
 </li>
 <li>
