@@ -53,8 +53,10 @@
 <meta name="twitter:title" content="Domain에 CNAME, MX record를 같이 등록하면서 겪은 이슈"/>
 <meta name="twitter:description" content="기존에 사용하고 있던 도메인에 레코드를 추가하면서 겪었던 이슈에 대해 기록해보려고한다.
 최소한 아래 5가지에대한 개념은 알고 있어야하기에 간단히 짚고 넘어가보자.
-  Domain 란? 인터넷에 연결되어있는 장치(컴퓨터, 서버, 스마트폰 등)를 식별할 수 있는 주소인 ip를 사람이 이해하고 기억하기 어렵기때문에 ip에 이름을 부여하여 쉽게 사용할 수 있도록하였는데 이때 부여한 이름이 도메인이다. e.g) google.co.kr, naver.com
-  DNS 란? Domain Name System으로 전화번호부라고 생각하면된다. 도메인과 ip의 쌍(pair)을 가지고있어 서로 변환하는 역할을 한다.
+  Domain 란?
+인터넷에 연결되어있는 장치(컴퓨터, 서버, 스마트폰 등)를 식별할 수 있는 주소인 ip를 사람이 이해하고 기억하기 어렵기때문에 ip에 이름을 부여하여 쉽게 사용할 수 있도록하였는데 이때 부여한 이름이 도메인이다. e.g) google.co.kr, naver.com
+  DNS 란?
+Domain Name System으로 전화번호부라고 생각하면된다. 도메인과 ip의 쌍(pair)을 가지고있어 서로 변환하는 역할을 한다.
 도메인-ip에 대한 쌍을 하나의 레코드(Record)라 한다."/>
 
 
@@ -131,12 +133,12 @@
 <p>최소한 아래 5가지에대한 개념은 알고 있어야하기에 간단히 짚고 넘어가보자.</p>
 <ol>
 <li>
-<p><strong>Domain 란?</strong>
+<p><strong>Domain 란?</strong><br>
 인터넷에 연결되어있는 장치(컴퓨터, 서버, 스마트폰 등)를 식별할 수 있는 주소인 ip를 사람이 이해하고 기억하기 어렵기때문에 ip에 이름을 부여하여 쉽게 사용할 수 있도록하였는데 이때 부여한 이름이 도메인이다.
 e.g) google.co.kr, naver.com</p>
 </li>
 <li>
-<p><strong>DNS 란?</strong>
+<p><strong>DNS 란?</strong><br>
 Domain Name System으로 전화번호부라고 생각하면된다. 도메인과 ip의 쌍(pair)을 가지고있어 서로 변환하는 역할을 한다.</p>
 <p>도메인-ip에 대한 쌍을 하나의 레코드(Record)라 한다.</p>
 <ul>
@@ -145,11 +147,11 @@ Domain Name System으로 전화번호부라고 생각하면된다. 도메인과 
 </ul>
 </li>
 <li>
-<p><strong>CNAME record?</strong>
+<p><strong>CNAME record?</strong><br>
 Canonical Name의 약자로 도메인을 또 다른 도메인 주소로 매핑 시키는 형태이다.</p>
 </li>
 <li>
-<p><strong>MX record?</strong>
+<p><strong>MX record?</strong><br>
 Mail Exchanger Record로 메일이 수신될 위치를 결정하는 레코드다. MX 레코드에는 우선순위와 도메인을 설정할 수 있다.</p>
 </li>
 <li>
