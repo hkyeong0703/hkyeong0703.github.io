@@ -285,12 +285,12 @@ A.co.kr mail <span class="nv">exchanger</span> <span class="o">=</span> <span cl
 <hr>
 <p>이제 해결 방안을 찾아보았다. 3가지정도가 있었다.</p>
 <ol>
-<li>네임 서버를 옮겨 AWS Route53 Hosted Zones을 이용하여 AWS ELB를 A레코드 alias로 등록
+<li>네임 서버를 옮겨 AWS Route53 Hosted Zones을 이용하여 AWS ELB를 A레코드 alias로 등록<br>
 참고: <a href="https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/CreatingHostedZone.html">Creating a public hosted zone</a>
 <a href="https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/migrate-dns-domain-in-use.html">Making Route 53 the DNS service for a domain that&rsquo;s in use</a></li>
-<li>AWS ELB에 NLB를 사용하여 고정 ip를 부여하여 A 레코드로 등록
+<li>AWS ELB에 NLB를 사용하여 고정 ip를 부여하여 A 레코드로 등록<br>
 참고: <a href="https://docs.aws.amazon.com/elasticloadbalancing/latest/network/create-network-load-balancer.html">Create a Network Load Balancer</a></li>
-<li>AWS global accelerator 사용
+<li>AWS global accelerator 사용<br>
 참고: <a href="https://aws.amazon.com/ko/blogs/korea/new-aws-global-accelerator-for-availability-and-performance/">AWS Global Accelerator</a></li>
 </ol>
 <p>주로 AWS를 사용하고있기에 앞으로 유지보수를 위해 1번을 택해 해결하였다.</p>
