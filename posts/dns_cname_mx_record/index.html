@@ -49,7 +49,9 @@
                 integrity="sha256-R5GEI5B9V3wfBML9KHMBhuykhvsY5S/IgsPHrV8lQLE="
                 crossorigin="anonymous"></script>
     
-    <meta name="twitter:card" content="summary"/>
+    <meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://hkyeong0703.github.io/logo.png"/>
+
 <meta name="twitter:title" content="Domain에 CNAME, MX Record를 같이 등록하면서 겪은 이슈"/>
 <meta name="twitter:description" content="기존에 사용하고 있던 도메인에 Record를 추가하면서 겪었던 이슈에 대해 기록해보려고한다.
 최소한 아래 5가지에 대한 개념은 알고 있어야하기에 간단히 짚고 넘어가보자.
@@ -74,12 +76,6 @@ Domain Name System으로 전화번호부라고 생각하면된다. 도메인과 
         </div>
     </div>
     <ul class="social-links">
-        
-            <li>
-                <a href="https://github.com/hkyeong0703/" rel="me" aria-label="GitHub">
-                    <i class="fab fa-github fa-2x" aria-hidden="true"></i>
-                </a>
-            </li>
         
     </ul>
     <div class="footer">
@@ -196,20 +192,45 @@ Mail Exchanger Record로 메일이 수신될 위치를 결정하는 Record다. M
 </li>
 </ul>
 <p>문제 상황을 파악하기위해 nslookup을 이용해 확인을 해보았다.</p>
-<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell">nslookup -querytype<span class="o">=</span>MX A.co.kr
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">nslookup -querytype<span class="o">=</span>MX A.co.kr
 
 None-authoritative answer:
 A.co.kr canonical <span class="nv">name</span> <span class="o">=</span> B.co.kr
 B.co.kr mail <span class="nv">exchanger</span> <span class="o">=</span> <span class="m">1</span> mail9.example.com
 B.co.kr mail <span class="nv">exchanger</span> <span class="o">=</span> <span class="m">10</span> mail7.example.com
 B.co.kr mail <span class="nv">exchanger</span> <span class="o">=</span> <span class="m">5</span> mail8.example.com
-</code></pre></div><div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell">nslookup -querytype<span class="o">=</span>MX A.co.kr
+</code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">nslookup -querytype<span class="o">=</span>MX A.co.kr
 
 None-authoritative answer:
 A.co.kr mail <span class="nv">exchanger</span> <span class="o">=</span> <span class="m">1</span> mail.example.com
 A.co.kr mail <span class="nv">exchanger</span> <span class="o">=</span> <span class="m">10</span> mail3.example.com
 A.co.kr mail <span class="nv">exchanger</span> <span class="o">=</span> <span class="m">5</span> mail2.example.com
-</code></pre></div><p>의도했던대로 A.co.kr에 등록된 메일서버로 조회가 될 때도 있었지만, 간헐적으로 CNAME Record가 먼저 조회되어 B.co.kr에 MX Record로 등록된 메일서버가 조회 되고있었다🤯🤯🤯🤯</p>
+</code></pre></td></tr></table>
+</div>
+</div><p>의도했던대로 A.co.kr에 등록된 메일서버로 조회가 될 때도 있었지만, 간헐적으로 CNAME Record가 먼저 조회되어 B.co.kr에 MX Record로 등록된 메일서버가 조회 되고있었다🤯🤯🤯🤯</p>
 <p>구글링을 시작했다&hellip;<strong>CNAME Record를 사용할 때의 주의 사항</strong>과 <strong>CNAME Record와 MX Record를 같이 사용했을 때</strong>의 문제점들이 발견되었다.</p>
 <ul>
 <li>
@@ -244,7 +265,7 @@ A.co.kr mail <span class="nv">exchanger</span> <span class="o">=</span> <span cl
 </li>
 </ul>
 <p>A.co.kr에 MX Record로 등록된 메일 서버를 계속 이용해야했기에 CNAME Record를 사용할 수 없는 것이었다&hellip;😭</p>
-<p><!-- raw HTML omitted --></p>
+<p><br /></p>
 <hr>
 <p>이제 해결 방안을 찾아보았다. 3가지정도가 있었다.</p>
 <ol>

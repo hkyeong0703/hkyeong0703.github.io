@@ -49,10 +49,12 @@
                 integrity="sha256-R5GEI5B9V3wfBML9KHMBhuykhvsY5S/IgsPHrV8lQLE="
                 crossorigin="anonymous"></script>
     
-    <meta name="twitter:card" content="summary"/>
+    <meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://hkyeong0703.github.io/logo.png"/>
+
 <meta name="twitter:title" content="Mysql View Definer"/>
-<meta name="twitter:description" content="https://dev.mysql.com/doc/refman/8.0/en/create-view.html CREATE [OR REPLACE] [ALGORITHM = {UNDEFINED | MERGE | TEMPTABLE}] [DEFINER = user] [SQL SECURITY { DEFINER | INVOKER }] VIEW view_name [(column_list)] AS select_statement [WITH [CASCADED | LOCAL] CHECK OPTION] django unit test를 진행하는 과정에서 로컬에 세팅한 DB에 있는 view table에서 권한이 없어 select를 못하는 에러가 계속 발생.
-_mysql_exceptions.OperationalError: (1449, &#34;The user specified as a definer (&#39;db_user&#39;@&#39;%&#39;) does not exist&#34;) 이유를 모른채 삽질을 하던 중, 생성 쿼리를 뽑아 봄."/>
+<meta name="twitter:description" content="1 2 3 4 5 6 7 8 9 10  https://dev.mysql.com/doc/refman/8.0/en/create-view.html CREATE [OR REPLACE] [ALGORITHM = {UNDEFINED | MERGE | TEMPTABLE}] [DEFINER = user] [SQL SECURITY { DEFINER | INVOKER }] VIEW view_name [(column_list)] AS select_statement [WITH [CASCADED | LOCAL] CHECK OPTION]   django unit test를 진행하는 과정에서 로컬에 세팅한 DB에 있는 view table에서 권한이 없어 select를 못하는 에러가 계속 발생.
+1  _mysql_exceptions.OperationalError: (1449, &#34;The user specified as a definer (&#39;db_user&#39;@&#39;%&#39;) does not exist&#34;)   이유를 모른채 삽질을 하던 중, 생성 쿼리를 뽑아 봄."/>
 
 
     
@@ -69,12 +71,6 @@ _mysql_exceptions.OperationalError: (1449, &#34;The user specified as a definer 
         </div>
     </div>
     <ul class="social-links">
-        
-            <li>
-                <a href="https://github.com/hkyeong0703/" rel="me" aria-label="GitHub">
-                    <i class="fab fa-github fa-2x" aria-hidden="true"></i>
-                </a>
-            </li>
         
     </ul>
     <div class="footer">
@@ -124,7 +120,21 @@ _mysql_exceptions.OperationalError: (1449, &#34;The user specified as a definer 
                 
             </div>
 
-            <div class="highlight"><pre class="chroma"><code class="language-sql" data-lang="sql"><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">dev</span><span class="p">.</span><span class="n">mysql</span><span class="p">.</span><span class="n">com</span><span class="o">/</span><span class="n">doc</span><span class="o">/</span><span class="n">refman</span><span class="o">/</span><span class="mi">8</span><span class="p">.</span><span class="mi">0</span><span class="o">/</span><span class="n">en</span><span class="o">/</span><span class="k">create</span><span class="o">-</span><span class="k">view</span><span class="p">.</span><span class="n">html</span>
+            <div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">dev</span><span class="p">.</span><span class="n">mysql</span><span class="p">.</span><span class="n">com</span><span class="o">/</span><span class="n">doc</span><span class="o">/</span><span class="n">refman</span><span class="o">/</span><span class="mi">8</span><span class="p">.</span><span class="mi">0</span><span class="o">/</span><span class="n">en</span><span class="o">/</span><span class="k">create</span><span class="o">-</span><span class="k">view</span><span class="p">.</span><span class="n">html</span>
 
 <span class="k">CREATE</span>
     <span class="p">[</span><span class="k">OR</span> <span class="k">REPLACE</span><span class="p">]</span>
@@ -134,11 +144,27 @@ _mysql_exceptions.OperationalError: (1449, &#34;The user specified as a definer 
     <span class="k">VIEW</span> <span class="n">view_name</span> <span class="p">[(</span><span class="n">column_list</span><span class="p">)]</span>
     <span class="k">AS</span> <span class="n">select_statement</span>
     <span class="p">[</span><span class="k">WITH</span> <span class="p">[</span><span class="k">CASCADED</span> <span class="o">|</span> <span class="k">LOCAL</span><span class="p">]</span> <span class="k">CHECK</span> <span class="k">OPTION</span><span class="p">]</span>
-</code></pre></div><p>django unit test를 진행하는 과정에서 로컬에 세팅한 DB에 있는 view table에서 권한이 없어 select를 못하는 에러가 계속 발생.</p>
-<div class="highlight"><pre class="chroma"><code class="language-sql" data-lang="sql"><span class="n">_mysql_exceptions</span><span class="p">.</span><span class="n">OperationalError</span><span class="p">:</span> <span class="p">(</span><span class="mi">1449</span><span class="p">,</span> <span class="s2">&#34;The user specified as a definer (&#39;db_user&#39;@&#39;%&#39;) does not exist&#34;</span><span class="p">)</span>
-</code></pre></div><p>이유를 모른채 삽질을 하던 중, 생성 쿼리를 뽑아 봄.</p>
-<div class="highlight"><pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">create</span> <span class="k">definer</span> <span class="o">=</span> <span class="s1">&#39;db_user&#39;</span><span class="o">@`%`</span> <span class="k">view</span> <span class="n">view_name</span> <span class="k">as</span> <span class="n">select_statement</span>
-</code></pre></div><p>definer가 지정된 상태였다.</p>
+</code></pre></td></tr></table>
+</div>
+</div><p>django unit test를 진행하는 과정에서 로컬에 세팅한 DB에 있는 view table에서 권한이 없어 select를 못하는 에러가 계속 발생.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="n">_mysql_exceptions</span><span class="p">.</span><span class="n">OperationalError</span><span class="p">:</span> <span class="p">(</span><span class="mi">1449</span><span class="p">,</span> <span class="s2">&#34;The user specified as a definer (&#39;db_user&#39;@&#39;%&#39;) does not exist&#34;</span><span class="p">)</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>이유를 모른채 삽질을 하던 중, 생성 쿼리를 뽑아 봄.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">create</span> <span class="k">definer</span> <span class="o">=</span> <span class="s1">&#39;db_user&#39;</span><span class="o">@`%`</span> <span class="k">view</span> <span class="n">view_name</span> <span class="k">as</span> <span class="n">select_statement</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>definer가 지정된 상태였다.</p>
 <p>내가 생성 할 시에 따로 설정을 해주지 않아도 기본 세팅으로 definer가 지정된 상태인 것이다.</p>
 <p>로컬 PC에서 unit test용 DB를 생성할 때, mysqldump를 통하여 초기 생성을하는데
 이 과정에서 definer로 지정된 유저가 아닌 다른 유저로 사용되고있기때문에 문제가 되는 것이다.</p>
@@ -150,9 +176,17 @@ _mysql_exceptions.OperationalError: (1449, &#34;The user specified as a definer 
 <ol start="2">
 <li>mysqldump 이후, sed 명령어를 사용하여 DEFINER 제거</li>
 </ol>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">sed -i <span class="s1">&#39;&#39;</span> <span class="s1">&#39;s/DEFINER=[^*]*\*/\*/g&#39;</span> <span class="nv">$sql_file</span> <span class="c1"># MACOS</span>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">sed -i <span class="s1">&#39;&#39;</span> <span class="s1">&#39;s/DEFINER=[^*]*\*/\*/g&#39;</span> <span class="nv">$sql_file</span> <span class="c1"># MACOS</span>
 sed -i <span class="s1">&#39;s/DEFINER=[^*]*\*/\*/g&#39;</span> <span class="nv">$sql_file</span> <span class="c1"># linux</span>
-</code></pre></div><p>mysqlpump는 mysql 5.7.8 버전부터 사용 가능한 것으로 확인이 되었다. 사용하고 있는 DB 사양 중 이하 버전도 포함이 되어 있기도 하고, 데이터 백업 없이 DDL만 가져오기 때문에 2번 방법을 통해 해결하였다.</p>
+</code></pre></td></tr></table>
+</div>
+</div><p>mysqlpump는 mysql 5.7.8 버전부터 사용 가능한 것으로 확인이 되었다. 사용하고 있는 DB 사양 중 이하 버전도 포함이 되어 있기도 하고, 데이터 백업 없이 DDL만 가져오기 때문에 2번 방법을 통해 해결하였다.</p>
 </div>
         <div class="post-footer">
             <div class="info">
