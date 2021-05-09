@@ -1,46 +1,36 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Posts on hkyeong&#39;s blog</title>
-    <link>https://hkyeong0703.github.io/posts/</link>
-    <description>Recent content in Posts on hkyeong&#39;s blog</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>en</language>
-    <lastBuildDate>Wed, 14 Apr 2021 18:15:10 +0900</lastBuildDate><atom:link href="https://hkyeong0703.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Domain에 CNAME, MX Record를 같이 등록하면서 겪은 이슈</title>
-      <link>https://hkyeong0703.github.io/posts/dns_cname_mx_record/</link>
-      <pubDate>Wed, 14 Apr 2021 18:15:10 +0900</pubDate>
-      
-      <guid>https://hkyeong0703.github.io/posts/dns_cname_mx_record/</guid>
-      <description>기존에 사용하고 있던 도메인에 Record를 추가하면서 겪었던 이슈에 대해 기록해보려고한다.
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>All Posts - hkyeong&#39;s blog</title>
+        <link>https://hkyeong0703.github.io/posts/</link>
+        <description>All Posts | hkyeong&#39;s blog</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Wed, 14 Apr 2021 18:15:10 &#43;0900</lastBuildDate><atom:link href="https://hkyeong0703.github.io/posts/" rel="self" type="application/rss+xml" /><item>
+    <title>Domain에 CNAME, MX Record를 같이 등록하면서 겪은 이슈</title>
+    <link>https://hkyeong0703.github.io/posts/dns_cname_mx_record/</link>
+    <pubDate>Wed, 14 Apr 2021 18:15:10 &#43;0900</pubDate>
+    <author>Author</author>
+    <guid>https://hkyeong0703.github.io/posts/dns_cname_mx_record/</guid>
+    <description><![CDATA[기존에 사용하고 있던 도메인에 Record를 추가하면서 겪었던 이슈에 대해 기록해보려고한다.
 최소한 아래 5가지에 대한 개념은 알고 있어야하기에 간단히 짚고 넘어가보자.
   Domain
 인터넷에 연결되어있는 장치(컴퓨터, 서버, 스마트폰 등)를 식별할 수 있는 주소인 IP를 사람이 이해하고 기억하기 어렵기때문에 IP에 이름을 부여하여 쉽게 사용할 수 있도록하였는데 이때 부여한 이름이 도메인이다. e.g) google.co.kr, naver.com
   DNS
 Domain Name System으로 전화번호부라고 생각하면된다. 도메인과 IP의 쌍(pair)을 가지고있어 서로 변환하는 역할을 한다.
-도메인-IP에 대한 쌍을 하나의 Record(Record)라 한다.</description>
-    </item>
-    
-    <item>
-      <title>Rest_api</title>
-      <link>https://hkyeong0703.github.io/posts/rest-api/</link>
-      <pubDate>Mon, 07 Sep 2020 00:12:11 +0900</pubDate>
-      
-      <guid>https://hkyeong0703.github.io/posts/rest-api/</guid>
-      <description>참고 동영상: https://youtu.be/RP_f5dMoHFc
-REST를 구성하는 스타일  client-server stateless cache uniform interface  제약 조건  identification of resource → resource가 uri로 표현되면 된다. mainpulation of resource through representations → resource를 변경할 때 http message에 표현을 담아서 처리하면 된다. self-descriptive messages  확장 가능한 커뮤니케이션이 가능하도록 함   hypermedia as the engine of application state (HATEOAS: application 상태는 Hyperlink를 이용해 전이되어야한다.)  application 상태 전이의 late binding, 어디서 어디로 전이가 가능한지 미리 결정되지 않는다.</description>
-    </item>
-    
-    <item>
-      <title>Mysql View Definer</title>
-      <link>https://hkyeong0703.github.io/posts/mysql-view-definer/</link>
-      <pubDate>Thu, 13 Aug 2020 00:17:43 +0900</pubDate>
-      
-      <guid>https://hkyeong0703.github.io/posts/mysql-view-definer/</guid>
-      <description>1 2 3 4 5 6 7 8 9 10  https://dev.mysql.com/doc/refman/8.0/en/create-view.html CREATE [OR REPLACE] [ALGORITHM = {UNDEFINED | MERGE | TEMPTABLE}] [DEFINER = user] [SQL SECURITY { DEFINER | INVOKER }] VIEW view_name [(column_list)] AS select_statement [WITH [CASCADED | LOCAL] CHECK OPTION]   django unit test를 진행하는 과정에서 로컬에 세팅한 DB에 있는 view table에서 권한이 없어 select를 못하는 에러가 계속 발생.
-1  _mysql_exceptions.OperationalError: (1449, &amp;#34;The user specified as a definer (&amp;#39;db_user&amp;#39;@&amp;#39;%&amp;#39;) does not exist&amp;#34;)   이유를 모른채 삽질을 하던 중, 생성 쿼리를 뽑아 봄.</description>
-    </item>
-    
-  </channel>
+도메인-IP에 대한 쌍을 하나의 Record(Record)라 한다.]]></description>
+</item><item>
+    <title>Rest_api</title>
+    <link>https://hkyeong0703.github.io/posts/rest-api/</link>
+    <pubDate>Mon, 07 Sep 2020 00:12:11 &#43;0900</pubDate>
+    <author>Author</author>
+    <guid>https://hkyeong0703.github.io/posts/rest-api/</guid>
+    <description><![CDATA[참고 동영상: https://youtu.be/RP_f5dMoHFc
+REST를 구성하는 스타일 client-server stateless cache uniform interface  제약 조건  identification of resource → resource가 uri로 표현되면 된다. mainpulation of resource through representations → resource를 변경할 때 http message에 표현을 담아서 처리하면 된다. self-descriptive messages  확장 가능한 커뮤니케이션이 가능하도록 함   hypermedia as the engine of application state (HATEOAS: application 상태는 Hyperlink를 이용해 전이되어야한다.)  application 상태 전이의 late binding, 어디서 어디로 전이가 가능한지 미리 결정되지 않는다.]]></description>
+</item><item>
+    <title>Mysql View Definer</title>
+    <link>https://hkyeong0703.github.io/posts/mysql-view-definer/</link>
+    <pubDate>Thu, 13 Aug 2020 00:17:43 &#43;0900</pubDate>
+    <author>Author</author>
+    <guid>https://hkyeong0703.github.io/posts/mysql-view-definer/</guid>
+    <description><![CDATA[1 2 3 4 5 6 7 8 9 10  https://dev.mysql.com/doc/refman/8.0/en/create-view.html CREATE [OR REPLACE] [ALGORITHM = {UNDEFINED | MERGE | TEMPTABLE}] [DEFINER = user] [SQL SECURITY { DEFINER | INVOKER }] VIEW view_name [(column_list)] AS select_statement [WITH [CASCADED | LOCAL] CHECK OPTION]   django unit test를 진행하는 과정에서 로컬에 세팅한 DB에 있는 view table에서 권한이 없어 select를 못하는 에러가 계속 발생.
+1  _mysql_exceptions.OperationalError: (1449, &#34;The user specified as a definer (&#39;db_user&#39;@&#39;%&#39;) does not exist&#34;)   이유를 모른채 삽질을 하던 중, 생성 쿼리를 뽑아 봄.]]></description>
+</item></channel>
 </rss>

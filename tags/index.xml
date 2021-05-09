@@ -1,74 +1,56 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Tags on hkyeong&#39;s blog</title>
-    <link>https://hkyeong0703.github.io/tags/</link>
-    <description>Recent content in Tags on hkyeong&#39;s blog</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>en</language>
-    <lastBuildDate>Wed, 14 Apr 2021 18:15:10 +0900</lastBuildDate><atom:link href="https://hkyeong0703.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>cname</title>
-      <link>https://hkyeong0703.github.io/tags/cname/</link>
-      <pubDate>Wed, 14 Apr 2021 18:15:10 +0900</pubDate>
-      
-      <guid>https://hkyeong0703.github.io/tags/cname/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>dns</title>
-      <link>https://hkyeong0703.github.io/tags/dns/</link>
-      <pubDate>Wed, 14 Apr 2021 18:15:10 +0900</pubDate>
-      
-      <guid>https://hkyeong0703.github.io/tags/dns/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>domain</title>
-      <link>https://hkyeong0703.github.io/tags/domain/</link>
-      <pubDate>Wed, 14 Apr 2021 18:15:10 +0900</pubDate>
-      
-      <guid>https://hkyeong0703.github.io/tags/domain/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>mx</title>
-      <link>https://hkyeong0703.github.io/tags/mx/</link>
-      <pubDate>Wed, 14 Apr 2021 18:15:10 +0900</pubDate>
-      
-      <guid>https://hkyeong0703.github.io/tags/mx/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>rfc2181</title>
-      <link>https://hkyeong0703.github.io/tags/rfc2181/</link>
-      <pubDate>Wed, 14 Apr 2021 18:15:10 +0900</pubDate>
-      
-      <guid>https://hkyeong0703.github.io/tags/rfc2181/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>rfc974</title>
-      <link>https://hkyeong0703.github.io/tags/rfc974/</link>
-      <pubDate>Wed, 14 Apr 2021 18:15:10 +0900</pubDate>
-      
-      <guid>https://hkyeong0703.github.io/tags/rfc974/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>도메인</title>
-      <link>https://hkyeong0703.github.io/tags/%EB%8F%84%EB%A9%94%EC%9D%B8/</link>
-      <pubDate>Wed, 14 Apr 2021 18:15:10 +0900</pubDate>
-      
-      <guid>https://hkyeong0703.github.io/tags/%EB%8F%84%EB%A9%94%EC%9D%B8/</guid>
-      <description></description>
-    </item>
-    
-  </channel>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>Tags - Tag - hkyeong&#39;s blog</title>
+        <link>https://hkyeong0703.github.io/tags/</link>
+        <description>Tags - Tag - hkyeong&#39;s blog</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Wed, 14 Apr 2021 18:15:10 &#43;0900</lastBuildDate><atom:link href="https://hkyeong0703.github.io/tags/" rel="self" type="application/rss+xml" /><item>
+    <title>cname</title>
+    <link>https://hkyeong0703.github.io/tags/cname/</link>
+    <pubDate>Wed, 14 Apr 2021 18:15:10 &#43;0900</pubDate>
+    <author>Author</author>
+    <guid>https://hkyeong0703.github.io/tags/cname/</guid>
+    <description><![CDATA[]]></description>
+</item><item>
+    <title>dns</title>
+    <link>https://hkyeong0703.github.io/tags/dns/</link>
+    <pubDate>Wed, 14 Apr 2021 18:15:10 &#43;0900</pubDate>
+    <author>Author</author>
+    <guid>https://hkyeong0703.github.io/tags/dns/</guid>
+    <description><![CDATA[]]></description>
+</item><item>
+    <title>domain</title>
+    <link>https://hkyeong0703.github.io/tags/domain/</link>
+    <pubDate>Wed, 14 Apr 2021 18:15:10 &#43;0900</pubDate>
+    <author>Author</author>
+    <guid>https://hkyeong0703.github.io/tags/domain/</guid>
+    <description><![CDATA[]]></description>
+</item><item>
+    <title>mx</title>
+    <link>https://hkyeong0703.github.io/tags/mx/</link>
+    <pubDate>Wed, 14 Apr 2021 18:15:10 &#43;0900</pubDate>
+    <author>Author</author>
+    <guid>https://hkyeong0703.github.io/tags/mx/</guid>
+    <description><![CDATA[]]></description>
+</item><item>
+    <title>rfc2181</title>
+    <link>https://hkyeong0703.github.io/tags/rfc2181/</link>
+    <pubDate>Wed, 14 Apr 2021 18:15:10 &#43;0900</pubDate>
+    <author>Author</author>
+    <guid>https://hkyeong0703.github.io/tags/rfc2181/</guid>
+    <description><![CDATA[]]></description>
+</item><item>
+    <title>rfc974</title>
+    <link>https://hkyeong0703.github.io/tags/rfc974/</link>
+    <pubDate>Wed, 14 Apr 2021 18:15:10 &#43;0900</pubDate>
+    <author>Author</author>
+    <guid>https://hkyeong0703.github.io/tags/rfc974/</guid>
+    <description><![CDATA[]]></description>
+</item><item>
+    <title>도메인</title>
+    <link>https://hkyeong0703.github.io/tags/%EB%8F%84%EB%A9%94%EC%9D%B8/</link>
+    <pubDate>Wed, 14 Apr 2021 18:15:10 &#43;0900</pubDate>
+    <author>Author</author>
+    <guid>https://hkyeong0703.github.io/tags/%EB%8F%84%EB%A9%94%EC%9D%B8/</guid>
+    <description><![CDATA[]]></description>
+</item></channel>
 </rss>
