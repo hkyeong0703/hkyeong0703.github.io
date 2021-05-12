@@ -1,0 +1,17 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>linux - Tag - hkyeong&#39;s blog</title>
+        <link>https://hkyeong0703.github.io/tags/linux/</link>
+        <description>linux - Tag - hkyeong&#39;s blog</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Wed, 12 May 2021 19:52:09 &#43;0900</lastBuildDate><atom:link href="https://hkyeong0703.github.io/tags/linux/" rel="self" type="application/rss+xml" /><item>
+    <title>리눅스 성능을 분석할 수 있는 명령어</title>
+    <link>https://hkyeong0703.github.io/posts/linux_performance_analysis_commands/</link>
+    <pubDate>Wed, 12 May 2021 19:52:09 &#43;0900</pubDate>
+    <author>Author</author>
+    <guid>https://hkyeong0703.github.io/posts/linux_performance_analysis_commands/</guid>
+    <description><![CDATA[Netflix Tech Blog 60초 내에 Linux 성능 분석 에서 리눅스 명령어를 통해 성능을 분석할 수 있는 방법이 나온다.
+번역과 함께 읽으며 내가 찾아본 내용들을 같이 추후 참고용으로 기록해두려고한다.
+아래 명령어들을 사용해 60초 안에 리눅스 환경에서 CLI를 이용해 어떤 것들을 확인할지 순서대로 알아보자. 일부 명령어는 sysstat 패키지를 설치해야한다.
+1 2 3 4 5 6 7 8 9 10  $ uptime $ dmesg | tail $ vmstat 1 $ mpstat -P ALL 1 $ pidstat 1 $ iostat -xz 1 $ free -m $ sar -n DEV 1 $ sar -n TCP,ETCP 1 $ top   자세히 알아보기uptime1 2  $ uptime 23:51:26 up 21:31, 1 user, load average - 30.]]></description>
+</item></channel>
+</rss>

@@ -3,54 +3,75 @@
         <title>Tags - Tag - hkyeong&#39;s blog</title>
         <link>https://hkyeong0703.github.io/tags/</link>
         <description>Tags - Tag - hkyeong&#39;s blog</description>
-        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Wed, 14 Apr 2021 18:15:10 &#43;0900</lastBuildDate><atom:link href="https://hkyeong0703.github.io/tags/" rel="self" type="application/rss+xml" /><item>
-    <title>cname</title>
-    <link>https://hkyeong0703.github.io/tags/cname/</link>
-    <pubDate>Wed, 14 Apr 2021 18:15:10 &#43;0900</pubDate>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Wed, 12 May 2021 19:52:09 &#43;0900</lastBuildDate><atom:link href="https://hkyeong0703.github.io/tags/" rel="self" type="application/rss+xml" /><item>
+    <title>dmesg</title>
+    <link>https://hkyeong0703.github.io/tags/dmesg/</link>
+    <pubDate>Wed, 12 May 2021 19:52:09 &#43;0900</pubDate>
     <author>Author</author>
-    <guid>https://hkyeong0703.github.io/tags/cname/</guid>
+    <guid>https://hkyeong0703.github.io/tags/dmesg/</guid>
     <description><![CDATA[]]></description>
 </item><item>
-    <title>dns</title>
-    <link>https://hkyeong0703.github.io/tags/dns/</link>
-    <pubDate>Wed, 14 Apr 2021 18:15:10 &#43;0900</pubDate>
+    <title>free</title>
+    <link>https://hkyeong0703.github.io/tags/free/</link>
+    <pubDate>Wed, 12 May 2021 19:52:09 &#43;0900</pubDate>
     <author>Author</author>
-    <guid>https://hkyeong0703.github.io/tags/dns/</guid>
+    <guid>https://hkyeong0703.github.io/tags/free/</guid>
     <description><![CDATA[]]></description>
 </item><item>
-    <title>domain</title>
-    <link>https://hkyeong0703.github.io/tags/domain/</link>
-    <pubDate>Wed, 14 Apr 2021 18:15:10 &#43;0900</pubDate>
+    <title>iostat</title>
+    <link>https://hkyeong0703.github.io/tags/iostat/</link>
+    <pubDate>Wed, 12 May 2021 19:52:09 &#43;0900</pubDate>
     <author>Author</author>
-    <guid>https://hkyeong0703.github.io/tags/domain/</guid>
+    <guid>https://hkyeong0703.github.io/tags/iostat/</guid>
     <description><![CDATA[]]></description>
 </item><item>
-    <title>mx</title>
-    <link>https://hkyeong0703.github.io/tags/mx/</link>
-    <pubDate>Wed, 14 Apr 2021 18:15:10 &#43;0900</pubDate>
+    <title>linux</title>
+    <link>https://hkyeong0703.github.io/tags/linux/</link>
+    <pubDate>Wed, 12 May 2021 19:52:09 &#43;0900</pubDate>
     <author>Author</author>
-    <guid>https://hkyeong0703.github.io/tags/mx/</guid>
+    <guid>https://hkyeong0703.github.io/tags/linux/</guid>
     <description><![CDATA[]]></description>
 </item><item>
-    <title>rfc2181</title>
-    <link>https://hkyeong0703.github.io/tags/rfc2181/</link>
-    <pubDate>Wed, 14 Apr 2021 18:15:10 &#43;0900</pubDate>
+    <title>mpstat</title>
+    <link>https://hkyeong0703.github.io/tags/mpstat/</link>
+    <pubDate>Wed, 12 May 2021 19:52:09 &#43;0900</pubDate>
     <author>Author</author>
-    <guid>https://hkyeong0703.github.io/tags/rfc2181/</guid>
+    <guid>https://hkyeong0703.github.io/tags/mpstat/</guid>
     <description><![CDATA[]]></description>
 </item><item>
-    <title>rfc974</title>
-    <link>https://hkyeong0703.github.io/tags/rfc974/</link>
-    <pubDate>Wed, 14 Apr 2021 18:15:10 &#43;0900</pubDate>
+    <title>pidstat</title>
+    <link>https://hkyeong0703.github.io/tags/pidstat/</link>
+    <pubDate>Wed, 12 May 2021 19:52:09 &#43;0900</pubDate>
     <author>Author</author>
-    <guid>https://hkyeong0703.github.io/tags/rfc974/</guid>
+    <guid>https://hkyeong0703.github.io/tags/pidstat/</guid>
     <description><![CDATA[]]></description>
 </item><item>
-    <title>도메인</title>
-    <link>https://hkyeong0703.github.io/tags/%EB%8F%84%EB%A9%94%EC%9D%B8/</link>
-    <pubDate>Wed, 14 Apr 2021 18:15:10 &#43;0900</pubDate>
+    <title>sar</title>
+    <link>https://hkyeong0703.github.io/tags/sar/</link>
+    <pubDate>Wed, 12 May 2021 19:52:09 &#43;0900</pubDate>
     <author>Author</author>
-    <guid>https://hkyeong0703.github.io/tags/%EB%8F%84%EB%A9%94%EC%9D%B8/</guid>
+    <guid>https://hkyeong0703.github.io/tags/sar/</guid>
+    <description><![CDATA[]]></description>
+</item><item>
+    <title>top</title>
+    <link>https://hkyeong0703.github.io/tags/top/</link>
+    <pubDate>Wed, 12 May 2021 19:52:09 &#43;0900</pubDate>
+    <author>Author</author>
+    <guid>https://hkyeong0703.github.io/tags/top/</guid>
+    <description><![CDATA[]]></description>
+</item><item>
+    <title>uptime</title>
+    <link>https://hkyeong0703.github.io/tags/uptime/</link>
+    <pubDate>Wed, 12 May 2021 19:52:09 &#43;0900</pubDate>
+    <author>Author</author>
+    <guid>https://hkyeong0703.github.io/tags/uptime/</guid>
+    <description><![CDATA[]]></description>
+</item><item>
+    <title>vmstat</title>
+    <link>https://hkyeong0703.github.io/tags/vmstat/</link>
+    <pubDate>Wed, 12 May 2021 19:52:09 &#43;0900</pubDate>
+    <author>Author</author>
+    <guid>https://hkyeong0703.github.io/tags/vmstat/</guid>
     <description><![CDATA[]]></description>
 </item></channel>
 </rss>
