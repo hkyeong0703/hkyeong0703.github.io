@@ -34,5 +34,15 @@ REST를 구성하는 스타일 client-server stateless cache uniform interface  
     <guid>https://hkyeong0703.github.io/posts/mysql-view-definer/</guid>
     <description><![CDATA[1 2 3 4 5 6 7 8 9 10  https://dev.mysql.com/doc/refman/8.0/en/create-view.html CREATE [OR REPLACE] [ALGORITHM = {UNDEFINED | MERGE | TEMPTABLE}] [DEFINER = user] [SQL SECURITY { DEFINER | INVOKER }] VIEW view_name [(column_list)] AS select_statement [WITH [CASCADED | LOCAL] CHECK OPTION]   django unit test를 진행하는 과정에서 로컬에 세팅한 DB에 있는 view table에서 권한이 없어 select를 못하는 에러가 계속 발생.
 1  _mysql_exceptions.OperationalError: (1449, &#34;The user specified as a definer (&#39;db_user&#39;@&#39;%&#39;) does not exist&#34;)   이유를 모른채 삽질을 하던 중, 생성 쿼리를 뽑아 봄.]]></description>
+</item><item>
+    <title></title>
+    <link>https://hkyeong0703.github.io/posts/%E1%84%86%E1%85%AE%E1%84%8C%E1%85%A6/</link>
+    <pubDate>Mon, 01 Jan 0001 00:00:00 &#43;0000</pubDate>
+    <author>Author</author>
+    <guid>https://hkyeong0703.github.io/posts/%E1%84%86%E1%85%AE%E1%84%8C%E1%85%A6/</guid>
+    <description><![CDATA[60초 내에 Linux 성능 분석 에서 리눅스 명령어를 통해 성능을 분석할 수 있는 방법이 나온다.
+번역과 함께 읽으며 내가 찾아본 내용들을 같이 추후 참고용으로 기록해두려고한다.
+명령어 요약아래 명령어들을 사용해 60초 안에 리눅스 환경에서 CLI를 이용해 어떤 것들을 확인할지 순서대로 알아보자. 일부 명령어는 sysstat 패키지를 설치해야한다.
+1 2 3 4 5 6 7 8 9 10  $ uptime $ dmesg | tail $ vmstat 1 $ mpstat -P ALL 1 $ pidstat 1 $ iostat -xz 1 $ free -m $ sar -n DEV 1 $ sar -n TCP,ETCP 1 $ top   uptime1 2  $ uptime 23:51:26 up 21:31, 1 user, load average - 30.]]></description>
 </item></channel>
 </rss>
