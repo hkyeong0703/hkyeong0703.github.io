@@ -3,7 +3,49 @@
         <title>Tags - Tag - hkyeong&#39;s blog</title>
         <link>https://hkyeong0703.github.io/tags/</link>
         <description>Tags - Tag - hkyeong&#39;s blog</description>
-        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Wed, 12 May 2021 19:52:09 &#43;0900</lastBuildDate><atom:link href="https://hkyeong0703.github.io/tags/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Wed, 23 Jun 2021 20:31:09 &#43;0900</lastBuildDate><atom:link href="https://hkyeong0703.github.io/tags/" rel="self" type="application/rss+xml" /><item>
+    <title>alarm</title>
+    <link>https://hkyeong0703.github.io/tags/alarm/</link>
+    <pubDate>Wed, 23 Jun 2021 20:31:09 &#43;0900</pubDate>
+    <author>Author</author>
+    <guid>https://hkyeong0703.github.io/tags/alarm/</guid>
+    <description><![CDATA[]]></description>
+</item><item>
+    <title>amplify</title>
+    <link>https://hkyeong0703.github.io/tags/amplify/</link>
+    <pubDate>Wed, 23 Jun 2021 20:31:09 &#43;0900</pubDate>
+    <author>Author</author>
+    <guid>https://hkyeong0703.github.io/tags/amplify/</guid>
+    <description><![CDATA[]]></description>
+</item><item>
+    <title>aws</title>
+    <link>https://hkyeong0703.github.io/tags/aws/</link>
+    <pubDate>Wed, 23 Jun 2021 20:31:09 &#43;0900</pubDate>
+    <author>Author</author>
+    <guid>https://hkyeong0703.github.io/tags/aws/</guid>
+    <description><![CDATA[]]></description>
+</item><item>
+    <title>deploy</title>
+    <link>https://hkyeong0703.github.io/tags/deploy/</link>
+    <pubDate>Wed, 23 Jun 2021 20:31:09 &#43;0900</pubDate>
+    <author>Author</author>
+    <guid>https://hkyeong0703.github.io/tags/deploy/</guid>
+    <description><![CDATA[]]></description>
+</item><item>
+    <title>notification</title>
+    <link>https://hkyeong0703.github.io/tags/notification/</link>
+    <pubDate>Wed, 23 Jun 2021 20:31:09 &#43;0900</pubDate>
+    <author>Author</author>
+    <guid>https://hkyeong0703.github.io/tags/notification/</guid>
+    <description><![CDATA[]]></description>
+</item><item>
+    <title>slack</title>
+    <link>https://hkyeong0703.github.io/tags/slack/</link>
+    <pubDate>Wed, 23 Jun 2021 20:31:09 &#43;0900</pubDate>
+    <author>Author</author>
+    <guid>https://hkyeong0703.github.io/tags/slack/</guid>
+    <description><![CDATA[]]></description>
+</item><item>
     <title>dmesg</title>
     <link>https://hkyeong0703.github.io/tags/dmesg/</link>
     <pubDate>Wed, 12 May 2021 19:52:09 &#43;0900</pubDate>
@@ -30,48 +72,6 @@
     <pubDate>Wed, 12 May 2021 19:52:09 &#43;0900</pubDate>
     <author>Author</author>
     <guid>https://hkyeong0703.github.io/tags/linux/</guid>
-    <description><![CDATA[]]></description>
-</item><item>
-    <title>mpstat</title>
-    <link>https://hkyeong0703.github.io/tags/mpstat/</link>
-    <pubDate>Wed, 12 May 2021 19:52:09 &#43;0900</pubDate>
-    <author>Author</author>
-    <guid>https://hkyeong0703.github.io/tags/mpstat/</guid>
-    <description><![CDATA[]]></description>
-</item><item>
-    <title>pidstat</title>
-    <link>https://hkyeong0703.github.io/tags/pidstat/</link>
-    <pubDate>Wed, 12 May 2021 19:52:09 &#43;0900</pubDate>
-    <author>Author</author>
-    <guid>https://hkyeong0703.github.io/tags/pidstat/</guid>
-    <description><![CDATA[]]></description>
-</item><item>
-    <title>sar</title>
-    <link>https://hkyeong0703.github.io/tags/sar/</link>
-    <pubDate>Wed, 12 May 2021 19:52:09 &#43;0900</pubDate>
-    <author>Author</author>
-    <guid>https://hkyeong0703.github.io/tags/sar/</guid>
-    <description><![CDATA[]]></description>
-</item><item>
-    <title>top</title>
-    <link>https://hkyeong0703.github.io/tags/top/</link>
-    <pubDate>Wed, 12 May 2021 19:52:09 &#43;0900</pubDate>
-    <author>Author</author>
-    <guid>https://hkyeong0703.github.io/tags/top/</guid>
-    <description><![CDATA[]]></description>
-</item><item>
-    <title>uptime</title>
-    <link>https://hkyeong0703.github.io/tags/uptime/</link>
-    <pubDate>Wed, 12 May 2021 19:52:09 &#43;0900</pubDate>
-    <author>Author</author>
-    <guid>https://hkyeong0703.github.io/tags/uptime/</guid>
-    <description><![CDATA[]]></description>
-</item><item>
-    <title>vmstat</title>
-    <link>https://hkyeong0703.github.io/tags/vmstat/</link>
-    <pubDate>Wed, 12 May 2021 19:52:09 &#43;0900</pubDate>
-    <author>Author</author>
-    <guid>https://hkyeong0703.github.io/tags/vmstat/</guid>
     <description><![CDATA[]]></description>
 </item></channel>
 </rss>

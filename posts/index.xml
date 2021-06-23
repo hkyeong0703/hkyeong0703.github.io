@@ -3,7 +3,16 @@
         <title>All Posts - hkyeong&#39;s blog</title>
         <link>https://hkyeong0703.github.io/posts/</link>
         <description>All Posts | hkyeong&#39;s blog</description>
-        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Wed, 12 May 2021 19:52:09 &#43;0900</lastBuildDate><atom:link href="https://hkyeong0703.github.io/posts/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Wed, 23 Jun 2021 20:31:09 &#43;0900</lastBuildDate><atom:link href="https://hkyeong0703.github.io/posts/" rel="self" type="application/rss+xml" /><item>
+    <title>AWS Amplify Console 슬랙으로 배포 알림 받기</title>
+    <link>https://hkyeong0703.github.io/posts/amplify_slack_notification/</link>
+    <pubDate>Wed, 23 Jun 2021 20:31:09 &#43;0900</pubDate>
+    <author>Author</author>
+    <guid>https://hkyeong0703.github.io/posts/amplify_slack_notification/</guid>
+    <description><![CDATA[AWS Amplify Console에서 배포시 슬랙으로 알림을 받아보는 방법을 작성해보려고한다.
+현재 AWS Amplify Console User Guide 을 보면 이메일 알림을 기본적으로 제공하고, 이를통해 만들어진 SNS 주제를 통해 Slack과 같은 다른 도구에 알림을 보내는 데 활용할 수 있다.
+email notification 생성 Amplify 콘솔을 연다. 이메일 알림을 설정할 앱을 선택합니다.   ]]></description>
+</item><item>
     <title>리눅스 성능을 분석할 수 있는 명령어</title>
     <link>https://hkyeong0703.github.io/posts/linux_performance_analysis_commands/</link>
     <pubDate>Wed, 12 May 2021 19:52:09 &#43;0900</pubDate>

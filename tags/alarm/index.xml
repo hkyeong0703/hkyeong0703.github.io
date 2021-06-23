@@ -1,0 +1,16 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>alarm - Tag - hkyeong&#39;s blog</title>
+        <link>https://hkyeong0703.github.io/tags/alarm/</link>
+        <description>alarm - Tag - hkyeong&#39;s blog</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Wed, 23 Jun 2021 20:31:09 &#43;0900</lastBuildDate><atom:link href="https://hkyeong0703.github.io/tags/alarm/" rel="self" type="application/rss+xml" /><item>
+    <title>AWS Amplify Console 슬랙으로 배포 알림 받기</title>
+    <link>https://hkyeong0703.github.io/posts/amplify_slack_notification/</link>
+    <pubDate>Wed, 23 Jun 2021 20:31:09 &#43;0900</pubDate>
+    <author>Author</author>
+    <guid>https://hkyeong0703.github.io/posts/amplify_slack_notification/</guid>
+    <description><![CDATA[AWS Amplify Console에서 배포시 슬랙으로 알림을 받아보는 방법을 작성해보려고한다.
+현재 AWS Amplify Console User Guide 을 보면 이메일 알림을 기본적으로 제공하고, 이를통해 만들어진 SNS 주제를 통해 Slack과 같은 다른 도구에 알림을 보내는 데 활용할 수 있다.
+email notification 생성 Amplify 콘솔을 연다. 이메일 알림을 설정할 앱을 선택합니다.   ]]></description>
+</item></channel>
+</rss>
