@@ -28,7 +28,7 @@ email notification 생성 Amplify 콘솔을 연다. Email 알림을 설정할 �
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/hkyeong0703.github.io\/posts\/amplify_slack_notification\/"
-        },"genre": "posts","keywords": "aws, amplify, slack, notification, alarm, deploy","wordCount":  116 ,
+        },"genre": "posts","keywords": "aws, amplify, slack, notification, alarm, deploy","wordCount":  174 ,
         "url": "https:\/\/hkyeong0703.github.io\/posts\/amplify_slack_notification\/","datePublished": "2021-06-23T20:31:09+09:00","dateModified": "2021-06-23T20:31:09+09:00","description": ""
     }
     </script></head>
@@ -102,7 +102,7 @@ email notification 생성 Amplify 콘솔을 연다. Email 알림을 설정할 �
                         <h1 class="single-title flipInX">AWS Amplify Console 슬랙으로 배포 알림 받기</h1><div class="post-meta summary-post-meta"><span class="post-meta-date meta-item">
                                 <span class="svg-icon icon-clock"></span><time class="timeago" datetime="2021-06-23">2021-06-23</time>
                             </span><span class="post-meta-words meta-item">
-                                <span class="svg-icon icon-pencil"></span>116 words
+                                <span class="svg-icon icon-pencil"></span>174 words
                             </span>
                             <span class="post-meta-reading meta-item">
                                 <span class="svg-icon icon-stopwatch"></span>One minute
@@ -193,7 +193,8 @@ email notification 생성 Amplify 콘솔을 연다. Email 알림을 설정할 �
          alt="notification"
          title="2021-06-23-5.png"
     /></li>
-<li>
+<li>다시 Amplify Console Notifications 창으로 돌아오면 Status가 Confirm으로 바뀐 것을 확인 할 수 있을 것이다.
+
 
 
 
@@ -204,7 +205,31 @@ email notification 생성 Amplify 콘솔을 연다. Email 알림을 설정할 �
          alt="notification"
          title="2021-06-23-7.png"
     /></li>
-<li></li>
+<li>이제 만들어진 SNS를 통해 slack으로 알림을 보내는 작업을 진행해보자.
+<a href="https://console.aws.amazon.com/sns/v3/home" target="_blank" rel="noopener noreffer">Amazon SNS</a> &gt; Topics 에 접속하여, Amplify App ID로 검색한다. (App ID는 Amplify Console 앱에 들어갔을 때 url에서 알 수 있다. 또는 App ARN에서 알 수 있다.)
+
+
+
+
+
+<img loading="lazy" decoding="async"
+         class="render-image"
+         src="https://hkyeong0703.github.io/posts/images/2021-06-23-8.png"
+         alt="notification"
+         title="2021-06-23-8.png"
+    /></li>
+<li>9번 과정에서 검색된 Topic을 선택 후,  클릭한다.
+
+
+
+
+
+<img loading="lazy" decoding="async"
+         class="render-image"
+         src="https://hkyeong0703.github.io/posts/images/2021-06-23-9.png"
+         alt="notification"
+         title="2021-06-23-9.png"
+    /></li>
 <li></li>
 <li></li>
 <li></li>
