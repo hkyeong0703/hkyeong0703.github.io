@@ -13,7 +13,7 @@
     <guid>https://hkyeong0703.github.io/posts/amplify_slack_notification/</guid>
     <description><![CDATA[AWS Amplify Console에서 배포시 슬랙으로 알림을 받아보는 방법을 작성해보려고한다.
 현재 AWS Amplify Console User Guide 을 보면 이메일 알림을 기본적으로 제공하고, 이를통해 만들어진 SNS 주제를 통해 Slack과 같은 다른 도구에 알림을 보내는 데 활용할 수 있다.
-email notification 생성 Amplify 콘솔을 연다. 이메일 알림을 설정할 앱을 선택합니다.   ]]></description>
+email notification 생성 Amplify 콘솔을 연다. Email 알림을 설정할 앱을 선택합니다. App settings &gt; Notifications &gt; Manage notifications 을 클릭한다.  알림을 받을 Email을 입력하고, 배포 알림을 받을 대상 브랜치를 선택 후 Save한다.  Notifications 페이지로 돌아오면, &ldquo;We Sent you an email to confirm subscriptions, please click on the link in the email to start receiving notifications.]]></description>
 </item><item>
     <title>리눅스 성능을 분석할 수 있는 명령어</title>
     <link>https://hkyeong0703.github.io/posts/linux_performance_analysis_commands/</link>

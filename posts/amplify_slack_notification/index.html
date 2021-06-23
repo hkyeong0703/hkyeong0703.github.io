@@ -8,7 +8,7 @@
 <meta name="twitter:description" content=""/><meta name="Description" content=""><meta property="og:title" content="AWS Amplify Console 슬랙으로 배포 알림 받기" />
 <meta property="og:description" content="AWS Amplify Console에서 배포시 슬랙으로 알림을 받아보는 방법을 작성해보려고한다.
 현재 AWS Amplify Console User Guide 을 보면 이메일 알림을 기본적으로 제공하고, 이를통해 만들어진 SNS 주제를 통해 Slack과 같은 다른 도구에 알림을 보내는 데 활용할 수 있다.
-email notification 생성 Amplify 콘솔을 연다. 이메일 알림을 설정할 앱을 선택합니다.   " />
+email notification 생성 Amplify 콘솔을 연다. Email 알림을 설정할 앱을 선택합니다. App settings &gt; Notifications &gt; Manage notifications 을 클릭한다.  알림을 받을 Email을 입력하고, 배포 알림을 받을 대상 브랜치를 선택 후 Save한다.  Notifications 페이지로 돌아오면, &ldquo;We Sent you an email to confirm subscriptions, please click on the link in the email to start receiving notifications." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://hkyeong0703.github.io/posts/amplify_slack_notification/" /><meta property="og:image" content="https://hkyeong0703.github.io/logo.png"/><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2021-06-23T20:31:09&#43;09:00" />
@@ -28,7 +28,7 @@ email notification 생성 Amplify 콘솔을 연다. 이메일 알림을 설정�
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/hkyeong0703.github.io\/posts\/amplify_slack_notification\/"
-        },"genre": "posts","keywords": "aws, amplify, slack, notification, alarm, deploy","wordCount":  47 ,
+        },"genre": "posts","keywords": "aws, amplify, slack, notification, alarm, deploy","wordCount":  116 ,
         "url": "https:\/\/hkyeong0703.github.io\/posts\/amplify_slack_notification\/","datePublished": "2021-06-23T20:31:09+09:00","dateModified": "2021-06-23T20:31:09+09:00","description": ""
     }
     </script></head>
@@ -102,7 +102,7 @@ email notification 생성 Amplify 콘솔을 연다. 이메일 알림을 설정�
                         <h1 class="single-title flipInX">AWS Amplify Console 슬랙으로 배포 알림 받기</h1><div class="post-meta summary-post-meta"><span class="post-meta-date meta-item">
                                 <span class="svg-icon icon-clock"></span><time class="timeago" datetime="2021-06-23">2021-06-23</time>
                             </span><span class="post-meta-words meta-item">
-                                <span class="svg-icon icon-pencil"></span>47 words
+                                <span class="svg-icon icon-pencil"></span>116 words
                             </span>
                             <span class="post-meta-reading meta-item">
                                 <span class="svg-icon icon-stopwatch"></span>One minute
@@ -132,7 +132,81 @@ email notification 생성 Amplify 콘솔을 연다. 이메일 알림을 설정�
 <p>현재  <a href="https://docs.aws.amazon.com/amplify/latest/userguide/notifications.html" target="_blank" rel="noopener noreffer">AWS Amplify Console User Guide</a> 을 보면 이메일 알림을 기본적으로 제공하고, 이를통해 만들어진 SNS 주제를 통해 Slack과 같은 다른 도구에 알림을 보내는 데 활용할 수 있다.</p>
 <h2 id="email-notification-생성" class="headerLink"><a href="#email-notification-%ec%83%9d%ec%84%b1" class="header-mark"></a>email notification 생성</h2><ol>
 <li><a href="https://console.aws.amazon.com/amplify/" target="_blank" rel="noopener noreffer">Amplify 콘솔을</a> 연다.</li>
-<li>이메일 알림을 설정할 앱을 선택합니다.</li>
+<li>Email 알림을 설정할 앱을 선택합니다.</li>
+<li>App settings &gt; Notifications &gt; Manage notifications 을 클릭한다.
+
+
+
+
+
+<img loading="lazy" decoding="async"
+         class="render-image"
+         src="https://hkyeong0703.github.io/posts/images/2021-06-23-1.png"
+         alt="notification"
+         title="2021-06-23-1.png"
+    /></li>
+<li>알림을 받을 Email을 입력하고, 배포 알림을 받을 대상 브랜치를 선택 후 Save한다.
+
+
+
+
+
+<img loading="lazy" decoding="async"
+         class="render-image"
+         src="https://hkyeong0703.github.io/posts/images/2021-06-23-2.png"
+         alt="notification email"
+         title="2021-06-23-2.png"
+    /></li>
+<li>Notifications 페이지로 돌아오면, <strong>&ldquo;We Sent you an email to confirm subscriptions, please click on the link in the email to start receiving notifications.&quot;</strong> 라는 문구가 뜰 것이다. 4번 과정에서 입력한 Email에 메일 1통이 전송되었을 것이다.
+
+
+
+
+
+<img loading="lazy" decoding="async"
+         class="render-image"
+         src="https://hkyeong0703.github.io/posts/images/2021-06-23-3.png"
+         alt="notification"
+         title="2021-06-23-3.png"
+    /></li>
+<li>Confirm subscription을 클릭한다. Email 인증 과정이라고 생각하면 된다.
+
+
+
+
+
+<img loading="lazy" decoding="async"
+         class="render-image"
+         src="https://hkyeong0703.github.io/posts/images/2021-06-23-4.png"
+         alt="notification"
+         title="2021-06-23-4.png"
+    /></li>
+<li>그럼 아래와 같은 팝업창이 뜬다.
+
+
+
+
+
+<img loading="lazy" decoding="async"
+         class="render-image"
+         src="https://hkyeong0703.github.io/posts/images/2021-06-23-5.png"
+         alt="notification"
+         title="2021-06-23-5.png"
+    /></li>
+<li>
+
+
+
+
+<img loading="lazy" decoding="async"
+         class="render-image"
+         src="https://hkyeong0703.github.io/posts/images/2021-06-23-7.png"
+         alt="notification"
+         title="2021-06-23-7.png"
+    /></li>
+<li></li>
+<li></li>
+<li></li>
 <li></li>
 </ol>
 </div><footer>
