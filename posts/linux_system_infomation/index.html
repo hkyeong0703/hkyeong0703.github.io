@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1"><meta name="robots" content="noodp"/><title>Linux_system_infomation | </title><meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content=""/>
+<meta name="twitter:title" content="Linux_system_infomation"/>
+<meta name="twitter:description" content=""/><meta name="Description" content=""><meta property="og:title" content="Linux_system_infomation" />
+<meta property="og:description" content="DevOps와 SE를 위한 리눅스 커널이야기 를 오랜만에 다시 꺼내 읽어보며, 정리해보려고한다.
+1장에서는 리눅스 시스템 구성 정보를 확인하는 방법이 나온다. 시스템의 문제점을 분석하고 확인하는데 제일 기본인 현재 시스템을 파악하는데 필요한 방법을 알아보자.
+커널 정보 확인가장 대표적인 방법은 uname 명령을 사용하는 것이다.
+1 2  $ uname -a Linux ip-172-31-27-89 5.4.0-1024-aws #24-Ubuntu SMP Sat Sep 5 06:19:55 UTC 2020 x86_64 x86_64 x86_64 GNU/Linux   dmesg 명령을 통해 몇가지 정보를 더 확인 할 수 있다." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://hkyeong0703.github.io/posts/linux_system_infomation/" /><meta property="og:image" content="https://hkyeong0703.github.io/logo.png"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2021-07-13T21:00:31&#43;09:00" />
+<meta property="article:modified_time" content="2021-07-13T21:00:31&#43;09:00" />
+
+<meta name="application-name" content="hkyeong&#39;s blog">
+<meta name="apple-mobile-web-app-title" content="hkyeong&#39;s blog"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+        <link rel="icon" type="image/png" sizes="192x192" href="/android-chrome-192x192.png">
+        <link rel="icon" type="image/png" sizes="512x512" href="/android-chrome-512x512.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://hkyeong0703.github.io/posts/linux_system_infomation/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/lib/prismjs/prism.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Linux_system_infomation",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/hkyeong0703.github.io\/posts\/linux_system_infomation\/"
+        },"genre": "posts","keywords": "linux, uptime, dmesg, vmstat, mpstat, pidstat, iostat, free, sar, top","wordCount":  204 ,
+        "url": "https:\/\/hkyeong0703.github.io\/posts\/linux_system_infomation\/","datePublished": "2021-07-13T21:00:31+09:00","dateModified": "2021-07-13T21:00:31+09:00","description": ""
+    }
+    </script></head>
+    <body data-header-desktop="" data-header-mobile=""><script>(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header>
+    <div class="desktop header" id="header-desktop">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="hkyeong&#39;s blog" class="header-logo logo-svg">hkyeong&#39;s blog</a>
+            </div>
+            <div class="menu">
+                <nav>
+                    <h2 class="display-hidden">Основная навигация</h2>
+                    <ul class="menu-inner"><li>
+                            <a class="menu-item" href="/"> Home </a>
+                        </li><li>
+                            <a class="menu-item" href="/posts/"> Posts </a>
+                        </li></ul>
+                </nav><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <span class="svg-icon icon-moon"></span>
+                </a>
+            </div>
+        </div>
+    </div><div class="mobile header" id="header-mobile">
+        <div class="header-container">
+            <div class="header-wrapper">
+                <div class="header-title">
+                    <a href="/" title="hkyeong&#39;s blog" class="header-logo">hkyeong&#39;s blog</a>
+                </div>
+                <div class="menu-toggle" id="menu-toggle-mobile">
+                    <span></span><span></span><span></span>
+                </div>
+            </div>
+            <div class="menu" id="menu-mobile"><nav>
+                    <h2 class="display-hidden">Основная навигация</h2>
+                    <ul><li>
+                            <a class="menu-item" href="/" title="">Home</a>
+                        </li><li>
+                            <a class="menu-item" href="/posts/" title="">Posts</a>
+                        </li></ul>
+                </nav>
+                <a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <span class="svg-icon icon-moon"></span>
+                </a></div>
+        </div>
+    </div></header><main class="main">
+<div class="container content-article  theme-classic"><div class="toc" id="toc-auto">
+            <div class="toc-title">Contents</div>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div>
+
+    
+    
+    <article>
+    
+
+        <header class="header-post">
+
+            
+
+            
+            <div class="post-title">
+
+                    <div class="post-all-meta">
+                        <nav class="breadcrumbs">
+    <ol>
+        <li><a href="/">Home </a></li><li>Linux_system_infomation</li>
+    </ol>
+</nav>
+                        <h1 class="single-title flipInX">Linux_system_infomation</h1><div class="post-meta summary-post-meta"><span class="post-meta-date meta-item">
+                                <span class="svg-icon icon-clock"></span><time class="timeago" datetime="2021-07-13">2021-07-13</time>
+                            </span><span class="post-meta-words meta-item">
+                                <span class="svg-icon icon-pencil"></span>204 words
+                            </span>
+                            <span class="post-meta-reading meta-item">
+                                <span class="svg-icon icon-stopwatch"></span>One minute
+                            </span>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                </header>
+
+        <div class="article-post toc-start">
+
+            <div class="content-block content-block-first content-block-position">
+
+                <div class="post single"><div class="details toc" id="toc-static"  data-kept="true">
+                        <div class="details-summary toc-title">
+                            <span>Contents</span>
+                        </div>
+                        <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#커널-정보-확인">커널 정보 확인</a></li>
+  </ul>
+</nav></div>
+                    </div><p><a href="http://www.yes24.com/Product/Goods/44376723" target="_blank" rel="noopener noreffer">DevOps와 SE를 위한 리눅스 커널이야기</a> 를 오랜만에 다시 꺼내 읽어보며, 정리해보려고한다.</p>
+<p>1장에서는 리눅스 시스템 구성 정보를 확인하는 방법이 나온다. 시스템의 문제점을 분석하고 확인하는데 제일 기본인 현재 시스템을 파악하는데 필요한 방법을 알아보자.</p>
+<h2 id="커널-정보-확인" class="headerLink"><a href="#%ec%bb%a4%eb%84%90-%ec%a0%95%eb%b3%b4-%ed%99%95%ec%9d%b8" class="header-mark"></a>커널 정보 확인</h2><p>가장 대표적인 방법은 <code>uname</code> 명령을 사용하는 것이다.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">$ uname -a
+Linux ip-172-31-27-89 5.4.0-1024-aws <span class="c1">#24-Ubuntu SMP Sat Sep 5 06:19:55 UTC 2020 x86_64 x86_64 x86_64 GNU/Linux</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><code>dmesg</code> 명령을 통해 몇가지 정보를 더 확인 할 수 있다. <code>dmesg</code> 는 커널 디버그 메세지로 커널이 부팅할 때 나오는 메세지와 운영 중에 발생하는 메세지를 볼 수 있게 해준다.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">$ dmesg <span class="p">|</span> grep -i kernel <span class="p">|</span> more
+<span class="o">[</span>    0.000000<span class="o">]</span> KERNEL supported cpus:
+<span class="o">[</span>    0.000000<span class="o">]</span> Netfront and the Xen platform PCI driver have been compiled <span class="k">for</span> this kernel: unplug emulated NICs.
+<span class="o">[</span>    0.000000<span class="o">]</span> Blkfront and the Xen platform PCI driver have been compiled <span class="k">for</span> this kernel: unplug emulated disks.
+               in your <span class="nv">root</span><span class="o">=</span> kernel <span class="nb">command</span> line option
+<span class="o">[</span>    0.043677<span class="o">]</span> Booting paravirtualized kernel on Xen HVM
+<span class="o">[</span>    0.044494<span class="o">]</span> Kernel <span class="nb">command</span> line: <span class="nv">BOOT_IMAGE</span><span class="o">=</span>/boot/vmlinuz-5.4.0-1024-aws <span class="nv">root</span><span class="o">=</span><span class="nv">PARTUUID</span><span class="o">=</span>a2f52878-01 ro <span class="nv">console</span><span class="o">=</span>tty1 c
+<span class="nv">onsole</span><span class="o">=</span>ttyS0 nvme_core.io_timeout<span class="o">=</span><span class="m">4294967295</span> <span class="nv">panic</span><span class="o">=</span>-1
+<span class="o">[</span>    0.065479<span class="o">]</span> Memory: 4019924K/4193908K available <span class="o">(</span>14339K kernel code, 2326K rwdata, 4632K rodata, 2656K init, 5120K b
+ss, 173984K reserved, 0K cma-reserved<span class="o">)</span>
+<span class="o">[</span>    0.065657<span class="o">]</span> Kernel/User page tables isolation: enabled
+</code></pre></td></tr></table>
+</div>
+</div></div><footer>
+                        <div class="post">
+
+
+<div class="post-share"></div>
+<div class="post-tags"><a href="/tags/linux/" class="tag">linux</a><a href="/tags/uptime/" class="tag">uptime</a><a href="/tags/dmesg/" class="tag">dmesg</a><a href="/tags/vmstat/" class="tag">vmstat</a><a href="/tags/mpstat/" class="tag">mpstat</a><a href="/tags/pidstat/" class="tag">pidstat</a><a href="/tags/iostat/" class="tag">iostat</a><a href="/tags/free/" class="tag">free</a><a href="/tags/sar/" class="tag">sar</a><a href="/tags/top/" class="tag">top</a></div></div>
+                </footer></div>
+        <div id="toc-final"></div>
+        </div>
+
+    
+    </article>
+    </div>
+
+</main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.82.0">Hugo</a> | Theme - <a href="https://ublogger.netlify.app/?utm_source=https://hkyeong0703.github.io&utm_medium=footer&utm_campaign=config&utm_term=2.0.1" target="_blank" title="uBlogger 2.0.1">uBlogger</a>
+                </div><div class="footer-line"><i class="svg-icon icon-copyright"></i><span>2021</span></div>
+        </div>
+    </footer></div>
+
+        <aside id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="svg-icon icon-arrow-up"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="svg-icon icon-comments-fixed"></i>
+            </a>
+        </aside><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="stylesheet" href="/lib/katex/copy-tex.min.css"><script src="/lib/smooth-scroll/smooth-scroll.min.js"></script><script src="/lib/clipboard/clipboard.min.js"></script><script src="/lib/katex/katex.min.js"></script><script src="/lib/katex/auto-render.min.js"></script><script src="/lib/katex/copy-tex.min.js"></script><script src="/lib/katex/mhchem.min.js"></script><script>window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":10},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false}};</script><script src="/js/theme.min.js"></script></body>
+</html>

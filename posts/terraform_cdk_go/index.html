@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1"><meta name="robots" content="noodp"/><title>Terraform용 cdk를 이용하여 Go로 AWS 인프라 구축 시작하기 | </title><meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content=""/>
+<meta name="twitter:title" content="Terraform용 cdk를 이용하여 Go로 AWS 인프라 구축 시작하기"/>
+<meta name="twitter:description" content=""/><meta name="Description" content=""><meta property="og:title" content="Terraform용 cdk를 이용하여 Go로 AWS 인프라 구축 시작하기" />
+<meta property="og:description" content="오늘은 Terraform용 CDK를 통해 Go언어를 사용하는 방법에대해 알아보려합니다.
+우선 Terraform과 CDK가 무엇인지부터 간단하게 알아보겠습니다.
+Terraform이란?HashiCorp사가 만든 오픈 소스 &ldquo;코드형 인프라(IaC)&rdquo; 툴 입니다. 인프라를 안전하고 효율적으로 구축, 변경 및 버전화 할 수 있습니다.
+선언적인 코딩 툴, HCL(HashiCorp Configuration Language)라고 불리는 상위 레벨 구성 언어를 사용하거나 또는 JSON으로 어플리케이션 실행을 위해 원하는 &ldquo;엔드 상태&rdquo; 클라우드 또는 온프레미스 인프라를 기술하도록 합니다. 그런 다음 해당 엔드 상태에 도달하기 위한 계획을 생성하고 인프라를 프로비저닝하기 위한 계획을 실행합니다." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://hkyeong0703.github.io/posts/terraform_cdk_go/" /><meta property="og:image" content="https://hkyeong0703.github.io/logo.png"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2021-07-14T22:01:24&#43;09:00" />
+<meta property="article:modified_time" content="2021-07-14T22:01:24&#43;09:00" />
+
+<meta name="application-name" content="hkyeong&#39;s blog">
+<meta name="apple-mobile-web-app-title" content="hkyeong&#39;s blog"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+        <link rel="icon" type="image/png" sizes="192x192" href="/android-chrome-192x192.png">
+        <link rel="icon" type="image/png" sizes="512x512" href="/android-chrome-512x512.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://hkyeong0703.github.io/posts/terraform_cdk_go/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/lib/prismjs/prism.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Terraform용 cdk를 이용하여 Go로 AWS 인프라 구축 시작하기",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/hkyeong0703.github.io\/posts\/terraform_cdk_go\/"
+        },"genre": "posts","keywords": "terraform, cdk, cdktf, go, hashicorp","wordCount":  1108 ,
+        "url": "https:\/\/hkyeong0703.github.io\/posts\/terraform_cdk_go\/","datePublished": "2021-07-14T22:01:24+09:00","dateModified": "2021-07-14T22:01:24+09:00","description": ""
+    }
+    </script></head>
+    <body data-header-desktop="" data-header-mobile=""><script>(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header>
+    <div class="desktop header" id="header-desktop">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="hkyeong&#39;s blog" class="header-logo logo-svg">hkyeong&#39;s blog</a>
+            </div>
+            <div class="menu">
+                <nav>
+                    <h2 class="display-hidden">Основная навигация</h2>
+                    <ul class="menu-inner"><li>
+                            <a class="menu-item" href="/"> Home </a>
+                        </li><li>
+                            <a class="menu-item" href="/posts/"> Posts </a>
+                        </li></ul>
+                </nav><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <span class="svg-icon icon-moon"></span>
+                </a>
+            </div>
+        </div>
+    </div><div class="mobile header" id="header-mobile">
+        <div class="header-container">
+            <div class="header-wrapper">
+                <div class="header-title">
+                    <a href="/" title="hkyeong&#39;s blog" class="header-logo">hkyeong&#39;s blog</a>
+                </div>
+                <div class="menu-toggle" id="menu-toggle-mobile">
+                    <span></span><span></span><span></span>
+                </div>
+            </div>
+            <div class="menu" id="menu-mobile"><nav>
+                    <h2 class="display-hidden">Основная навигация</h2>
+                    <ul><li>
+                            <a class="menu-item" href="/" title="">Home</a>
+                        </li><li>
+                            <a class="menu-item" href="/posts/" title="">Posts</a>
+                        </li></ul>
+                </nav>
+                <a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <span class="svg-icon icon-moon"></span>
+                </a></div>
+        </div>
+    </div></header><main class="main">
+<div class="container content-article  theme-classic"><div class="toc" id="toc-auto">
+            <div class="toc-title">Contents</div>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div>
+
+    
+    
+    <article>
+    
+
+        <header class="header-post">
+
+            
+
+            
+            <div class="post-title">
+
+                    <div class="post-all-meta">
+                        <nav class="breadcrumbs">
+    <ol>
+        <li><a href="/">Home </a></li><li>Terraform용 cdk를 이용하여 Go로 AWS 인프라 구축 시작하기</li>
+    </ol>
+</nav>
+                        <h1 class="single-title flipInX">Terraform용 cdk를 이용하여 Go로 AWS 인프라 구축 시작하기</h1><div class="post-meta summary-post-meta"><span class="post-meta-date meta-item">
+                                <span class="svg-icon icon-clock"></span><time class="timeago" datetime="2021-07-14">2021-07-14</time>
+                            </span><span class="post-meta-words meta-item">
+                                <span class="svg-icon icon-pencil"></span>1108 words
+                            </span>
+                            <span class="post-meta-reading meta-item">
+                                <span class="svg-icon icon-stopwatch"></span>6 minutes
+                            </span>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                </header>
+
+        <div class="article-post toc-start">
+
+            <div class="content-block content-block-first content-block-position">
+
+                <div class="post single"><div class="details toc" id="toc-static"  data-kept="true">
+                        <div class="details-summary toc-title">
+                            <span>Contents</span>
+                        </div>
+                        <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#terraform이란">Terraform이란?</a></li>
+    <li><a href="#cdk란">CDK란?</a></li>
+    <li><a href="#terraform용-cdk">Terraform용 CDK</a></li>
+    <li><a href="#cdktf-설치">cdktf 설치</a></li>
+    <li><a href="#go로-사용하여-aws-인프라-구축하기">GO로 사용하여 AWS 인프라 구축하기</a>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#aws-자격-증명-환경-변수-추가">AWS 자격 증명 환경 변수 추가</a></li>
+            <li><a href="#cdktf-application-초기화">cdktf application 초기화</a></li>
+            <li><a href="#aws-provider로-추가">AWS provider로 추가</a></li>
+            <li><a href="#cdktf-어플리케이션-정의">cdktf 어플리케이션 정의</a></li>
+            <li><a href="#배포하기---인프라-프로비저닝">배포하기 - 인프라 프로비저닝</a></li>
+            <li><a href="#인프라-정리하기">인프라 정리하기</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#마치며">마치며</a></li>
+  </ul>
+</nav></div>
+                    </div><p>오늘은 Terraform용 CDK를 통해 Go언어를 사용하는 방법에대해 알아보려합니다.</p>
+<p>우선 Terraform과 CDK가 무엇인지부터 간단하게 알아보겠습니다.</p>
+<h2 id="terraform이란" class="headerLink"><a href="#terraform%ec%9d%b4%eb%9e%80" class="header-mark"></a>Terraform이란?</h2><p>HashiCorp사가 만든 오픈 소스 &ldquo;코드형 인프라(IaC)&rdquo; 툴 입니다. 인프라를 안전하고 효율적으로 구축, 변경 및 버전화 할 수 있습니다.</p>
+<p>선언적인 코딩 툴, HCL(HashiCorp Configuration Language)라고 불리는 상위 레벨 구성 언어를 사용하거나 또는 JSON으로 어플리케이션 실행을 위해 원하는 &ldquo;엔드 상태&rdquo; 클라우드 또는 온프레미스 인프라를 기술하도록 합니다. 그런 다음 해당 엔드 상태에 도달하기 위한 계획을 생성하고 인프라를 프로비저닝하기 위한 계획을 실행합니다.</p>
+<p>더 자세히 알아보고싶으시다면, <a href="https://www.terraform.io/intro/index.html" target="_blank" rel="noopener noreffer">Terraform Doc</a> 읽어보시면 좋을 듯 합니다.</p>
+<h2 id="cdk란" class="headerLink"><a href="#cdk%eb%9e%80" class="header-mark"></a>CDK란?</h2><p>CDK(Cloud Development Kit)는 익숙한 프로그래밍 언어를 사용하여 클라우드 어플리케이션 리소스를 정의할 수 있는 오픈 소스 소프트웨어 개발 프레임워크입니다.</p>
+<h2 id="terraform용-cdk" class="headerLink"><a href="#terraform%ec%9a%a9-cdk" class="header-mark"></a>Terraform용 CDK</h2><p>그럼 이제 Terraform용 CDK를 알아보려합니다. 앞서 Terraform은 HCL이라는 언어를 이용해야한다고 설명했습니다. 새로운 언어를 사용하는게 좋을 수도 있지만, 좀 더 개발자들에게 익숙한 프로그래밍 언어를 사용하여 인프라를 정의한다면 더욱 편할 것입니다. 이를 가능하도록해주는 것이 Terraform용 CDK 즉, **cdktf(Cloud Development Kit for Terrafrom)**입니다. 지원되는 언어로는 <a href="https://github.com/hashicorp/terraform-cdk/blob/main/docs/getting-started/typescript.md" target="_blank" rel="noopener noreffer">TypeScript</a>, <a href="https://github.com/hashicorp/terraform-cdk/blob/main/docs/getting-started/python.md" target="_blank" rel="noopener noreffer">Python</a>, <a href="https://github.com/hashicorp/terraform-cdk/blob/main/docs/getting-started/java.md" target="_blank" rel="noopener noreffer">Java</a>, <a href="https://github.com/hashicorp/terraform-cdk/blob/main/docs/getting-started/csharp.md" target="_blank" rel="noopener noreffer">C#</a>, <a href="https://github.com/hashicorp/terraform-cdk/blob/main/docs/getting-started/go.md" target="_blank" rel="noopener noreffer">Go</a> 가 있습니다.</p>
+<p>
+
+
+
+
+<img loading="lazy" decoding="async"
+         class="render-image"
+         src="https://github.com/hashicorp/terraform-cdk/blob/main/docs/terraform-platform.png?raw=true"
+         alt="terraform-platform.png"
+         title="terraform-platform.png?raw=true"
+    /></p>
+<p>작동 방식은 지원되는 프로그래밍 언어로 작성을하면 CDK를 통해 JSON을 생성한 다음 해당 JSON을 사용하여 표준 Terraform명령을 실행시키는 방식입니다.</p>
+<p><code>deploy</code> 명령어를 통해 프로그래밍 언어로 작성된 코드에서 Terraform에서 사용 할 수 있는 구조로 하위 디렉토리  <code>cdktf.out</code> 에  JSON 구성되고 인프라 프로비저닝을 진행합니다.</p>
+<h2 id="cdktf-설치" class="headerLink"><a href="#cdktf-%ec%84%a4%ec%b9%98" class="header-mark"></a>cdktf 설치</h2><p>설치하는 과정부터 알아봅시다.</p>
+<p>우선, cdktf를 설치하기위해선 Terraform, Node.js, Yarn이 필요합니다.</p>
+<ul>
+<li>Terraform &gt;= v0.12</li>
+<li>Node.js &gt;= v12.16</li>
+<li>Yarn &gt;= v1.21</li>
+</ul>
+<p>cdktf를 설치하는 방법은 총 3가지가 있지만, 저는 MacOS를 사용하다보니 Homebrew를 이용하여 설치해보려고합니다. 다른 설치 방법은 <a href="https://learn.hashicorp.com/tutorials/terraform/cdktf-install?in=terraform/cdktf#install-cdktf" target="_blank" rel="noopener noreffer">여기</a> 를 참고해주세요.</p>
+<p>아래의 명령어를 사용하면 간단히 설치가 완료됩니다.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">$ brew install cdktf
+</code></pre></td></tr></table>
+</div>
+</div><p>설치가 완료되면 <code>cdktf</code> 명령어를 통해 설치 완료 여부를 확인하실 수 있습니다.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">$ cdktf
+cdktf <span class="o">[</span>command<span class="o">]</span>
+
+Commands:
+  cdktf deploy <span class="o">[</span>stack<span class="o">]</span> <span class="o">[</span>OPTIONS<span class="o">]</span>   Deploy the given stack
+  cdktf destroy <span class="o">[</span>stack<span class="o">]</span> <span class="o">[</span>OPTIONS<span class="o">]</span>  Destroy the given stack
+  cdktf diff <span class="o">[</span>stack<span class="o">]</span> <span class="o">[</span>OPTIONS<span class="o">]</span>     Perform a diff <span class="o">(</span>terraform plan<span class="o">)</span> <span class="k">for</span> the given stack
+  cdktf get <span class="o">[</span>OPTIONS<span class="o">]</span>              Generate CDK Constructs <span class="k">for</span> Terraform providers and modules.
+  cdktf init <span class="o">[</span>OPTIONS<span class="o">]</span>             Create a new cdktf project from a template.
+  cdktf list <span class="o">[</span>OPTIONS<span class="o">]</span>             List stacks in app.
+  cdktf login                      Retrieves an API token to connect to Terraform Cloud.
+  cdktf synth <span class="o">[</span>stack<span class="o">]</span> <span class="o">[</span>OPTIONS<span class="o">]</span>    Synthesizes Terraform code <span class="k">for</span> the given app in a directory.                    <span class="o">[</span>aliases: synthesize<span class="o">]</span>
+
+Options:
+  --version                   Show version number                                                                              <span class="o">[</span>boolean<span class="o">]</span>
+  --disable-logging           Dont write log files. Supported using the env CDKTF_DISABLE_LOGGING.             <span class="o">[</span>boolean<span class="o">]</span> <span class="o">[</span>default: true<span class="o">]</span>
+  --disable-plugin-cache-env  Dont <span class="nb">set</span> TF_PLUGIN_CACHE_DIR automatically. This is useful when the plugin cache is configured
+                              differently. Supported using the env CDKTF_DISABLE_PLUGIN_CACHE_ENV.            <span class="o">[</span>boolean<span class="o">]</span> <span class="o">[</span>default: false<span class="o">]</span>
+  --log-level                 Which log level should be written. Only supported via setting the env CDKTF_LOG_LEVEL             <span class="o">[</span>string<span class="o">]</span>
+  -h, --help                  Show <span class="nb">help</span>                                                                                        <span class="o">[</span>boolean<span class="o">]</span>
+
+Options can be specified via environment variables with the <span class="s2">&#34;CDKTF_&#34;</span> prefix <span class="o">(</span>e.g. <span class="s2">&#34;CDKTF_OUTPUT&#34;</span><span class="o">)</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="go로-사용하여-aws-인프라-구축하기" class="headerLink"><a href="#go%eb%a1%9c-%ec%82%ac%ec%9a%a9%ed%95%98%ec%97%ac-aws-%ec%9d%b8%ed%94%84%eb%9d%bc-%ea%b5%ac%ec%b6%95%ed%95%98%ea%b8%b0" class="header-mark"></a>GO로 사용하여 AWS 인프라 구축하기</h2><p>드디어 Go언어를 사용하여 AWS 인프라를 구축해보도록하겠습니다.</p>
+<p>시작하기위해선 Golang v1.16+ 버전과 AWS 계정, AWS Access Credentials이 필요합니다.</p>
+<h4 id="aws-자격-증명-환경-변수-추가" class="headerLink"><a href="#aws-%ec%9e%90%ea%b2%a9-%ec%a6%9d%eb%aa%85-%ed%99%98%ea%b2%bd-%eb%b3%80%ec%88%98-%ec%b6%94%ea%b0%80" class="header-mark"></a>AWS 자격 증명 환경 변수 추가</h4><p>AWS 인프라 구축을 위해 <code>AWS_ACCESS_KEY_ID</code>, <code>AWS_SECRET_ACCESS_KEY</code> 를 환경 변수로 추가합니다.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">$ <span class="nb">export</span> <span class="nv">AWS_ACCESS_KEY_ID</span><span class="o">=</span>XXXXX
+$ <span class="nb">export</span> <span class="nv">AWS_SECRET_ACCESS_KEY</span><span class="o">=</span>XXXXX
+</code></pre></td></tr></table>
+</div>
+</div><h4 id="cdktf-application-초기화" class="headerLink"><a href="#cdktf-application-%ec%b4%88%ea%b8%b0%ed%99%94" class="header-mark"></a>cdktf application 초기화</h4><p>프로젝트를 구성할 디렉토리를 생성하여, 프로젝트 root 디렉토리를 이동합니다.
+해당 단계에서 생성한 디렉토리를 프로젝트 root 디렉토리라고 부르겠습니다.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">$ mkdir terraform/learn-cdktf-go
+$ <span class="nb">cd</span> terraform/learn-cdktf-go
+</code></pre></td></tr></table>
+</div>
+</div><p>root 디렉토리에서 <code>cdktf init</code> 명령어를 통해 Go 템플릿으로 초기화를 시켜어야합니다.
+이 과정에서 Project Name, Project Description을 입력 할 수 있는데 따로 입력하셔도되고 입력하지 않을 경우, default로 세팅됩니다.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">$ cdktf init --template<span class="o">=</span><span class="s2">&#34;go&#34;</span> --local
+Note: By supplying <span class="s1">&#39;--local&#39;</span> option you have chosen <span class="nb">local</span> storage mode <span class="k">for</span> storing the state of your stack.
+This means that your Terraform state file will be stored locally on disk in a file <span class="s1">&#39;terraform.tfstate&#39;</span> in the root of your project.
+
+We will now <span class="nb">set</span> up the project. Please enter the details <span class="k">for</span> your project.
+If you want to exit, press ^C.
+
+Project Name: <span class="o">(</span>default: <span class="s1">&#39;learn-cdktf-go&#39;</span><span class="o">)</span>
+Project Description: <span class="o">(</span>default: <span class="s1">&#39;A simple getting started project for cdktf.&#39;</span><span class="o">)</span>
+</code></pre></td></tr></table>
+</div>
+</div><h4 id="aws-provider로-추가" class="headerLink"><a href="#aws-provider%eb%a1%9c-%ec%b6%94%ea%b0%80" class="header-mark"></a>AWS provider로 추가</h4><p>root 디렉토리 내 생성된 <code>cdktf.json</code> 파일을 열어 <code>aws</code> 를 provider 중 하나로 추가합니다.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-json" data-lang="json"><span class="p">{</span>
+    <span class="nt">&#34;language&#34;</span><span class="p">:</span> <span class="s2">&#34;go&#34;</span><span class="p">,</span>
+    <span class="nt">&#34;app&#34;</span><span class="p">:</span> <span class="s2">&#34;go run main.go&#34;</span><span class="p">,</span>
+    <span class="nt">&#34;codeMakerOutput&#34;</span><span class="p">:</span> <span class="s2">&#34;generated&#34;</span><span class="p">,</span>
+    <span class="nt">&#34;terraformProviders&#34;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s2">&#34;hashicorp/aws@~&gt; 3.42&#34;</span>
+    <span class="p">],</span>
+    <span class="nt">&#34;terraformModules&#34;</span><span class="p">:</span> <span class="p">[],</span>
+    <span class="nt">&#34;context&#34;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&#34;excludeStackIdFromLogicalIds&#34;</span><span class="p">:</span> <span class="s2">&#34;true&#34;</span><span class="p">,</span>
+        <span class="nt">&#34;allowSepCharsInLogicalIds&#34;</span><span class="p">:</span> <span class="s2">&#34;true&#34;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>추가한 <code>aws</code> provider를 설치하기위해 <code>cdktf get</code> 명령어를 사용해줍니다.
+이 단계가 완료되는데엔 꽤 오랜 시간이 필요합니다. 저는 약 15분 가량이 걸렸던 것 같네요.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">$ cdktf get
+⠧ downloading and generating modules and providers...
+
+Generated go constructs in the output directory: generated
+
+The generated code depends on jsii-runtime-go. If you haven<span class="err">&#39;</span>t yet installed it, you can run go mod tidy to automatically install it.
+</code></pre></td></tr></table>
+</div>
+</div><p>cdktf는 Go언어로 작성된 코드가  javascript로 작성된 CDK와 상호 작용할 수 있도록 <code>jsii</code> 라이브러리를 사용하는데 <code>go mod tidy</code> 명령어를 통해 <code>jsii</code> 가 설치되었는지 확인해주세요.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">$ go mod tidy
+go: finding module <span class="k">for</span> package github.com/aws/jsii-runtime-go/runtime
+go: found github.com/aws/jsii-runtime-go/runtime in github.com/aws/jsii-runtime-go v1.30.0
+</code></pre></td></tr></table>
+</div>
+</div><p>이제 Go언어를 사용하여 cdktf 사용할 준비는 모두 완료되었습니다.</p>
+<h4 id="cdktf-어플리케이션-정의" class="headerLink"><a href="#cdktf-%ec%96%b4%ed%94%8c%eb%a6%ac%ec%bc%80%ec%9d%b4%ec%85%98-%ec%a0%95%ec%9d%98" class="header-mark"></a>cdktf 어플리케이션 정의</h4><p>아주 간단하게 서울 리전에 미리 만들어진 AMI를 통해 인스턴스를 띄우고, 없애는 작업을 진행해보겠습니다.</p>
+<p>서울 리전에 AMI를 이용하여 인스턴스를 띄우는 Go 언어의 코드는 아래와 같습니다.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-go" data-lang="go"><span class="kn">package</span> <span class="nx">main</span>
+
+<span class="kn">import</span> <span class="p">(</span>
+	<span class="s">&#34;cdk.tf/go/stack/generated/hashicorp/aws&#34;</span>
+
+	<span class="s">&#34;github.com/aws/constructs-go/constructs/v3&#34;</span>
+	<span class="s">&#34;github.com/aws/jsii-runtime-go&#34;</span>
+	<span class="s">&#34;github.com/hashicorp/terraform-cdk-go/cdktf&#34;</span>
+<span class="p">)</span>
+
+<span class="kd">func</span> <span class="nf">NewMyStack</span><span class="p">(</span><span class="nx">scope</span> <span class="nx">constructs</span><span class="p">.</span><span class="nx">Construct</span><span class="p">,</span> <span class="nx">id</span> <span class="kt">string</span><span class="p">)</span> <span class="nx">cdktf</span><span class="p">.</span><span class="nx">TerraformStack</span> <span class="p">{</span>
+	<span class="nx">stack</span> <span class="o">:=</span> <span class="nx">cdktf</span><span class="p">.</span><span class="nf">NewTerraformStack</span><span class="p">(</span><span class="nx">scope</span><span class="p">,</span> <span class="o">&amp;</span><span class="nx">id</span><span class="p">)</span>
+
+	<span class="c1">// AWS provider 구
+</span><span class="c1"></span>	<span class="nx">aws</span><span class="p">.</span><span class="nf">NewAwsProvider</span><span class="p">(</span><span class="nx">stack</span><span class="p">,</span> <span class="nx">jsii</span><span class="p">.</span><span class="nf">String</span><span class="p">(</span><span class="s">&#34;aws&#34;</span><span class="p">),</span> <span class="o">&amp;</span><span class="nx">aws</span><span class="p">.</span><span class="nx">AwsProviderConfig</span><span class="p">{</span>
+		<span class="nx">Region</span><span class="p">:</span> <span class="nx">jsii</span><span class="p">.</span><span class="nf">String</span><span class="p">(</span><span class="s">&#34;ap-northeast-2&#34;</span><span class="p">),</span>
+	<span class="p">})</span>
+
+	<span class="c1">// aws.NewInstance 클래스를 이용하여 인스턴스 정의
+</span><span class="c1"></span>	<span class="nx">instance</span> <span class="o">:=</span> <span class="nx">aws</span><span class="p">.</span><span class="nf">NewInstance</span><span class="p">(</span><span class="nx">stack</span><span class="p">,</span> <span class="nx">jsii</span><span class="p">.</span><span class="nf">String</span><span class="p">(</span><span class="s">&#34;compute&#34;</span><span class="p">),</span> <span class="o">&amp;</span><span class="nx">aws</span><span class="p">.</span><span class="nx">InstanceConfig</span><span class="p">{</span>
+		<span class="nx">Ami</span><span class="p">:</span>          <span class="nx">jsii</span><span class="p">.</span><span class="nf">String</span><span class="p">(</span><span class="s">&#34;ami-0aec549e9b79a186e&#34;</span><span class="p">),</span>
+		<span class="nx">InstanceType</span><span class="p">:</span> <span class="nx">jsii</span><span class="p">.</span><span class="nf">String</span><span class="p">(</span><span class="s">&#34;t2.micro&#34;</span><span class="p">),</span>
+		<span class="nx">Tags</span><span class="p">:</span> <span class="o">&amp;</span><span class="kd">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="o">*</span><span class="kt">string</span><span class="p">{</span>
+			<span class="s">&#34;Name&#34;</span><span class="p">:</span>   <span class="nx">jsii</span><span class="p">.</span><span class="nf">String</span><span class="p">(</span><span class="s">&#34;Go-Demo&#34;</span><span class="p">),</span>
+		<span class="p">},</span>
+	<span class="p">})</span>
+
+	<span class="c1">// 결과로 생성된 인스턴스으 public ip를 반환
+</span><span class="c1"></span>	<span class="nx">cdktf</span><span class="p">.</span><span class="nf">NewTerraformOutput</span><span class="p">(</span><span class="nx">stack</span><span class="p">,</span> <span class="nx">jsii</span><span class="p">.</span><span class="nf">String</span><span class="p">(</span><span class="s">&#34;public_ip&#34;</span><span class="p">),</span> <span class="o">&amp;</span><span class="nx">cdktf</span><span class="p">.</span><span class="nx">TerraformOutputConfig</span><span class="p">{</span>
+		<span class="nx">Value</span><span class="p">:</span> <span class="nx">instance</span><span class="p">.</span><span class="nf">PublicIp</span><span class="p">(),</span>
+	<span class="p">})</span>
+
+	<span class="k">return</span> <span class="nx">stack</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+	<span class="nx">app</span> <span class="o">:=</span> <span class="nx">cdktf</span><span class="p">.</span><span class="nf">NewApp</span><span class="p">(</span><span class="kc">nil</span><span class="p">)</span>
+
+	<span class="nf">NewMyStack</span><span class="p">(</span><span class="nx">app</span><span class="p">,</span> <span class="s">&#34;learn-cdktf-go&#34;</span><span class="p">)</span>
+
+	<span class="nx">app</span><span class="p">.</span><span class="nf">Synth</span><span class="p">()</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h4 id="배포하기---인프라-프로비저닝" class="headerLink"><a href="#%eb%b0%b0%ed%8f%ac%ed%95%98%ea%b8%b0---%ec%9d%b8%ed%94%84%eb%9d%bc-%ed%94%84%eb%a1%9c%eb%b9%84%ec%a0%80%eb%8b%9d" class="header-mark"></a>배포하기 - 인프라 프로비저닝</h4><p><code>cdktf deploy</code> 를 통해 작성한 코드를 실행하여 배포합니다. 배포 작업이 완료되면 생성된 인스턴스의 public ip가 출력됩니다.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">$ cdktf deploy
+Deploying Stack: learn-cdktf-go
+Resources
+ ✔ AWS_INSTANCE         compute             aws_instance.compute
+
+Summary: <span class="m">1</span> created, <span class="m">0</span> updated, <span class="m">0</span> destroyed.
+
+Output: <span class="nv">public_ip</span> <span class="o">=</span> 13.124.68.3
+</code></pre></td></tr></table>
+</div>
+</div><p>AWS console EC2 대시보드에 들어가셔도 생성된 인스턴스를 확인하실 수 있습니다.</p>
+<p>출력된 pucblic ip 또는 Name 태그를 지정했기에 &lsquo;Go-Demo&rsquo;로 검색하시면 확인 가능합니다.</p>
+<p>
+
+
+
+
+<img loading="lazy" decoding="async"
+         class="render-image"
+         src="https://hkyeong0703.github.io/posts/images/go-demo-ec2.png"
+         alt="aws ec2 dashboard"
+         title="go-demo-ec2.png"
+    /></p>
+<h4 id="인프라-정리하기" class="headerLink"><a href="#%ec%9d%b8%ed%94%84%eb%9d%bc-%ec%a0%95%eb%a6%ac%ed%95%98%ea%b8%b0" class="header-mark"></a>인프라 정리하기</h4><p>앞 단계에서 생성된 인프라를 정리해보겠습니다.</p>
+<p>Terraform을 이용하면, 직접 AWS Console에 접속하거나 cli를 이용하여 정리할 필요가 없습니다.</p>
+<p><code>cdktf destroy</code> 명령어를 통해 인스턴스를 정리할 수 있습니다.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">$ cdktf destroy
+Destroying Stack: learn-cdktf-go
+Resources
+ ✔ AWS_INSTANCE         compute             aws_instance.compute
+
+Summary: <span class="m">1</span> destroyed.
+</code></pre></td></tr></table>
+</div>
+</div><p>AWS console EC2 대시보드에서도 Terminated된 것을 확인하실수 있습니다.</p>
+<p>
+
+
+
+
+<img loading="lazy" decoding="async"
+         class="render-image"
+         src="https://hkyeong0703.github.io/posts/images/go-demo-ec2.png"
+         alt="aws ec2 dashboard"
+         title="go-demo-ec2.png"
+    /></p>
+<h2 id="마치며" class="headerLink"><a href="#%eb%a7%88%ec%b9%98%eb%a9%b0" class="header-mark"></a>마치며</h2><p>Terraform용 CDK를 이용하여, AWS EC2를 구축하고 정리하는 작업까지 진행해보며 사용 방법을 간단히 알아봤습니다.</p>
+<p>CDK를 활용하면 보다 개발자가 편한 언어를 이용하여 인프라 프로비저닝을 할 수 있다는 장점은 정말 큰 것 같습니다.</p>
+<p>하지만 Go언어를 통해 cdktf를 사용하기엔 아직은 실험적인, 베타 단계라고합니다.
+cdktf 사용하시려고 계획하시거든 Go언어보단 Typesctipt 또는 Pythond 추천 드립니다.</p>
+</div><footer>
+                        <div class="post">
+
+
+<div class="post-share"></div>
+<div class="post-tags"><a href="/tags/terraform/" class="tag">terraform</a><a href="/tags/cdk/" class="tag">cdk</a><a href="/tags/cdktf/" class="tag">cdktf</a><a href="/tags/go/" class="tag">go</a><a href="/tags/hashicorp/" class="tag">hashicorp</a></div></div>
+                </footer></div>
+        <div id="toc-final"></div>
+        </div>
+
+    
+    </article>
+    </div>
+
+</main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.82.0">Hugo</a> | Theme - <a href="https://ublogger.netlify.app/?utm_source=https://hkyeong0703.github.io&utm_medium=footer&utm_campaign=config&utm_term=2.0.1" target="_blank" title="uBlogger 2.0.1">uBlogger</a>
+                </div><div class="footer-line"><i class="svg-icon icon-copyright"></i><span>2021</span></div>
+        </div>
+    </footer></div>
+
+        <aside id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="svg-icon icon-arrow-up"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="svg-icon icon-comments-fixed"></i>
+            </a>
+        </aside><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="stylesheet" href="/lib/katex/copy-tex.min.css"><script src="/lib/smooth-scroll/smooth-scroll.min.js"></script><script src="/lib/clipboard/clipboard.min.js"></script><script src="/lib/katex/katex.min.js"></script><script src="/lib/katex/auto-render.min.js"></script><script src="/lib/katex/copy-tex.min.js"></script><script src="/lib/katex/mhchem.min.js"></script><script>window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":10},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false}};</script><script src="/js/theme.min.js"></script></body>
+</html>

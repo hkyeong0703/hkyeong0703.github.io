@@ -3,7 +3,17 @@
         <title>linux - Tag - hkyeong&#39;s blog</title>
         <link>https://hkyeong0703.github.io/tags/linux/</link>
         <description>linux - Tag - hkyeong&#39;s blog</description>
-        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Wed, 12 May 2021 19:52:09 &#43;0900</lastBuildDate><atom:link href="https://hkyeong0703.github.io/tags/linux/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Tue, 13 Jul 2021 21:00:31 &#43;0900</lastBuildDate><atom:link href="https://hkyeong0703.github.io/tags/linux/" rel="self" type="application/rss+xml" /><item>
+    <title>Linux_system_infomation</title>
+    <link>https://hkyeong0703.github.io/posts/linux_system_infomation/</link>
+    <pubDate>Tue, 13 Jul 2021 21:00:31 &#43;0900</pubDate>
+    <author>Author</author>
+    <guid>https://hkyeong0703.github.io/posts/linux_system_infomation/</guid>
+    <description><![CDATA[DevOps와 SE를 위한 리눅스 커널이야기 를 오랜만에 다시 꺼내 읽어보며, 정리해보려고한다.
+1장에서는 리눅스 시스템 구성 정보를 확인하는 방법이 나온다. 시스템의 문제점을 분석하고 확인하는데 제일 기본인 현재 시스템을 파악하는데 필요한 방법을 알아보자.
+커널 정보 확인가장 대표적인 방법은 uname 명령을 사용하는 것이다.
+1 2  $ uname -a Linux ip-172-31-27-89 5.4.0-1024-aws #24-Ubuntu SMP Sat Sep 5 06:19:55 UTC 2020 x86_64 x86_64 x86_64 GNU/Linux   dmesg 명령을 통해 몇가지 정보를 더 확인 할 수 있다.]]></description>
+</item><item>
     <title>리눅스 성능을 분석할 수 있는 명령어</title>
     <link>https://hkyeong0703.github.io/posts/linux_performance_analysis_commands/</link>
     <pubDate>Wed, 12 May 2021 19:52:09 &#43;0900</pubDate>

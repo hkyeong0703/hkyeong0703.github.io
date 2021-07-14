@@ -3,75 +3,75 @@
         <title>Tags - Tag - hkyeong&#39;s blog</title>
         <link>https://hkyeong0703.github.io/tags/</link>
         <description>Tags - Tag - hkyeong&#39;s blog</description>
-        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Wed, 23 Jun 2021 20:31:09 &#43;0900</lastBuildDate><atom:link href="https://hkyeong0703.github.io/tags/" rel="self" type="application/rss+xml" /><item>
-    <title>alarm</title>
-    <link>https://hkyeong0703.github.io/tags/alarm/</link>
-    <pubDate>Wed, 23 Jun 2021 20:31:09 &#43;0900</pubDate>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Wed, 14 Jul 2021 22:01:24 &#43;0900</lastBuildDate><atom:link href="https://hkyeong0703.github.io/tags/" rel="self" type="application/rss+xml" /><item>
+    <title>cdk</title>
+    <link>https://hkyeong0703.github.io/tags/cdk/</link>
+    <pubDate>Wed, 14 Jul 2021 22:01:24 &#43;0900</pubDate>
     <author>Author</author>
-    <guid>https://hkyeong0703.github.io/tags/alarm/</guid>
+    <guid>https://hkyeong0703.github.io/tags/cdk/</guid>
     <description><![CDATA[]]></description>
 </item><item>
-    <title>amplify</title>
-    <link>https://hkyeong0703.github.io/tags/amplify/</link>
-    <pubDate>Wed, 23 Jun 2021 20:31:09 &#43;0900</pubDate>
+    <title>cdktf</title>
+    <link>https://hkyeong0703.github.io/tags/cdktf/</link>
+    <pubDate>Wed, 14 Jul 2021 22:01:24 &#43;0900</pubDate>
     <author>Author</author>
-    <guid>https://hkyeong0703.github.io/tags/amplify/</guid>
+    <guid>https://hkyeong0703.github.io/tags/cdktf/</guid>
     <description><![CDATA[]]></description>
 </item><item>
-    <title>aws</title>
-    <link>https://hkyeong0703.github.io/tags/aws/</link>
-    <pubDate>Wed, 23 Jun 2021 20:31:09 &#43;0900</pubDate>
+    <title>go</title>
+    <link>https://hkyeong0703.github.io/tags/go/</link>
+    <pubDate>Wed, 14 Jul 2021 22:01:24 &#43;0900</pubDate>
     <author>Author</author>
-    <guid>https://hkyeong0703.github.io/tags/aws/</guid>
+    <guid>https://hkyeong0703.github.io/tags/go/</guid>
     <description><![CDATA[]]></description>
 </item><item>
-    <title>deploy</title>
-    <link>https://hkyeong0703.github.io/tags/deploy/</link>
-    <pubDate>Wed, 23 Jun 2021 20:31:09 &#43;0900</pubDate>
+    <title>hashicorp</title>
+    <link>https://hkyeong0703.github.io/tags/hashicorp/</link>
+    <pubDate>Wed, 14 Jul 2021 22:01:24 &#43;0900</pubDate>
     <author>Author</author>
-    <guid>https://hkyeong0703.github.io/tags/deploy/</guid>
+    <guid>https://hkyeong0703.github.io/tags/hashicorp/</guid>
     <description><![CDATA[]]></description>
 </item><item>
-    <title>notification</title>
-    <link>https://hkyeong0703.github.io/tags/notification/</link>
-    <pubDate>Wed, 23 Jun 2021 20:31:09 &#43;0900</pubDate>
+    <title>terraform</title>
+    <link>https://hkyeong0703.github.io/tags/terraform/</link>
+    <pubDate>Wed, 14 Jul 2021 22:01:24 &#43;0900</pubDate>
     <author>Author</author>
-    <guid>https://hkyeong0703.github.io/tags/notification/</guid>
-    <description><![CDATA[]]></description>
-</item><item>
-    <title>slack</title>
-    <link>https://hkyeong0703.github.io/tags/slack/</link>
-    <pubDate>Wed, 23 Jun 2021 20:31:09 &#43;0900</pubDate>
-    <author>Author</author>
-    <guid>https://hkyeong0703.github.io/tags/slack/</guid>
+    <guid>https://hkyeong0703.github.io/tags/terraform/</guid>
     <description><![CDATA[]]></description>
 </item><item>
     <title>dmesg</title>
     <link>https://hkyeong0703.github.io/tags/dmesg/</link>
-    <pubDate>Wed, 12 May 2021 19:52:09 &#43;0900</pubDate>
+    <pubDate>Tue, 13 Jul 2021 21:00:31 &#43;0900</pubDate>
     <author>Author</author>
     <guid>https://hkyeong0703.github.io/tags/dmesg/</guid>
     <description><![CDATA[]]></description>
 </item><item>
     <title>free</title>
     <link>https://hkyeong0703.github.io/tags/free/</link>
-    <pubDate>Wed, 12 May 2021 19:52:09 &#43;0900</pubDate>
+    <pubDate>Tue, 13 Jul 2021 21:00:31 &#43;0900</pubDate>
     <author>Author</author>
     <guid>https://hkyeong0703.github.io/tags/free/</guid>
     <description><![CDATA[]]></description>
 </item><item>
     <title>iostat</title>
     <link>https://hkyeong0703.github.io/tags/iostat/</link>
-    <pubDate>Wed, 12 May 2021 19:52:09 &#43;0900</pubDate>
+    <pubDate>Tue, 13 Jul 2021 21:00:31 &#43;0900</pubDate>
     <author>Author</author>
     <guid>https://hkyeong0703.github.io/tags/iostat/</guid>
     <description><![CDATA[]]></description>
 </item><item>
     <title>linux</title>
     <link>https://hkyeong0703.github.io/tags/linux/</link>
-    <pubDate>Wed, 12 May 2021 19:52:09 &#43;0900</pubDate>
+    <pubDate>Tue, 13 Jul 2021 21:00:31 &#43;0900</pubDate>
     <author>Author</author>
     <guid>https://hkyeong0703.github.io/tags/linux/</guid>
+    <description><![CDATA[]]></description>
+</item><item>
+    <title>mpstat</title>
+    <link>https://hkyeong0703.github.io/tags/mpstat/</link>
+    <pubDate>Tue, 13 Jul 2021 21:00:31 &#43;0900</pubDate>
+    <author>Author</author>
+    <guid>https://hkyeong0703.github.io/tags/mpstat/</guid>
     <description><![CDATA[]]></description>
 </item></channel>
 </rss>

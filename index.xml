@@ -3,9 +3,29 @@
         <title>hkyeong&#39;s blog</title>
         <link>https://hkyeong0703.github.io/</link>
         <description>hkyeong&#39;s blog</description>
-        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Wed, 23 Jun 2021 20:31:09 &#43;0900</lastBuildDate>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Wed, 14 Jul 2021 22:01:24 &#43;0900</lastBuildDate>
             <atom:link href="https://hkyeong0703.github.io/index.xml" rel="self" type="application/rss+xml" />
         <item>
+    <title>Terraform용 cdk를 이용하여 Go로 AWS 인프라 구축 시작하기</title>
+    <link>https://hkyeong0703.github.io/posts/terraform_cdk_go/</link>
+    <pubDate>Wed, 14 Jul 2021 22:01:24 &#43;0900</pubDate>
+    <author>Author</author>
+    <guid>https://hkyeong0703.github.io/posts/terraform_cdk_go/</guid>
+    <description><![CDATA[오늘은 Terraform용 CDK를 통해 Go언어를 사용하는 방법에대해 알아보려합니다.
+우선 Terraform과 CDK가 무엇인지부터 간단하게 알아보겠습니다.
+Terraform이란?HashiCorp사가 만든 오픈 소스 &ldquo;코드형 인프라(IaC)&rdquo; 툴 입니다. 인프라를 안전하고 효율적으로 구축, 변경 및 버전화 할 수 있습니다.
+선언적인 코딩 툴, HCL(HashiCorp Configuration Language)라고 불리는 상위 레벨 구성 언어를 사용하거나 또는 JSON으로 어플리케이션 실행을 위해 원하는 &ldquo;엔드 상태&rdquo; 클라우드 또는 온프레미스 인프라를 기술하도록 합니다. 그런 다음 해당 엔드 상태에 도달하기 위한 계획을 생성하고 인프라를 프로비저닝하기 위한 계획을 실행합니다.]]></description>
+</item><item>
+    <title>Linux_system_infomation</title>
+    <link>https://hkyeong0703.github.io/posts/linux_system_infomation/</link>
+    <pubDate>Tue, 13 Jul 2021 21:00:31 &#43;0900</pubDate>
+    <author>Author</author>
+    <guid>https://hkyeong0703.github.io/posts/linux_system_infomation/</guid>
+    <description><![CDATA[DevOps와 SE를 위한 리눅스 커널이야기 를 오랜만에 다시 꺼내 읽어보며, 정리해보려고한다.
+1장에서는 리눅스 시스템 구성 정보를 확인하는 방법이 나온다. 시스템의 문제점을 분석하고 확인하는데 제일 기본인 현재 시스템을 파악하는데 필요한 방법을 알아보자.
+커널 정보 확인가장 대표적인 방법은 uname 명령을 사용하는 것이다.
+1 2  $ uname -a Linux ip-172-31-27-89 5.4.0-1024-aws #24-Ubuntu SMP Sat Sep 5 06:19:55 UTC 2020 x86_64 x86_64 x86_64 GNU/Linux   dmesg 명령을 통해 몇가지 정보를 더 확인 할 수 있다.]]></description>
+</item><item>
     <title>AWS Amplify Console 슬랙으로 배포 알림 받기</title>
     <link>https://hkyeong0703.github.io/posts/amplify_slack_notification/</link>
     <pubDate>Wed, 23 Jun 2021 20:31:09 &#43;0900</pubDate>
