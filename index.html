@@ -106,24 +106,6 @@ Terraform이란?HashiCorp사가 만든 오픈 소스 &ldquo;코드형 인프라(
 <article itemscope itemtype="http://schema.org/Article">
     <div class="summary summary-animation" style="margin-bottom:0">
         <header><div style="padding-top: 20px;padding-left: 20px;padding-right: 20px;"><h2 class="summary-title" itemprop="name headline">
-                    <a href="/posts/linux_system_infomation/" target="_blank">Linux_system_infomation</a>
-                </h2><div class="post-meta summary-post-meta"><span class="meta-item post-publish"><span class="svg-icon icon-clock"></span><time class="timeago" datetime="2021-07-13">2021-07-13</time></span></div></div>
-        </header>
-
-        <div class="article-text"><div class="content summary-content">DevOps와 SE를 위한 리눅스 커널이야기 를 오랜만에 다시 꺼내 읽어보며, 정리해보려고한다.
-1장에서는 리눅스 시스템 구성 정보를 확인하는 방법이 나온다. 시스템의 문제점을 분석하고 확인하는데 제일 기본인 현재 시스템을 파악하는데 필요한 방법을 알아보자.
-커널 정보 확인가장 대표적인 방법은 uname 명령을 사용하는 것이다.
-1 2  $ uname -a Linux ip-172-31-27-89 5.4.0-1024-aws #24-Ubuntu SMP Sat Sep 5 06:19:55 UTC 2020 x86_64 x86_64 x86_64 GNU/Linux   dmesg 명령을 통해 몇가지 정보를 더 확인 할 수 있다.</div></div>
-    </div>
-
-    <div class="post-tags-summary-under-footer"><footer>
-            <div class="post-tags-summary-under-footer-display" ><a class="post-tag-summary" href="/tags/linux/" style="">linux</a><a class="post-tag-summary" href="/tags/uptime/" style="">uptime</a><a class="post-tag-summary" href="/tags/dmesg/" style="">dmesg</a><a class="post-tag-summary" href="/tags/vmstat/" style="">vmstat</a><a class="post-tag-summary" href="/tags/mpstat/" style="">mpstat</a><a class="post-tag-summary" href="/tags/pidstat/" style="">pidstat</a><a class="post-tag-summary" href="/tags/iostat/" style="">iostat</a><a class="post-tag-summary" href="/tags/free/" style="">free</a><a class="post-tag-summary" href="/tags/sar/" style="">sar</a><a class="post-tag-summary" href="/tags/top/" style="">top</a></div>
-        </footer></div>
-</article>
-
-<article itemscope itemtype="http://schema.org/Article">
-    <div class="summary summary-animation" style="margin-bottom:0">
-        <header><div style="padding-top: 20px;padding-left: 20px;padding-right: 20px;"><h2 class="summary-title" itemprop="name headline">
                     <a href="/posts/amplify_slack_notification/" target="_blank">AWS Amplify Console 슬랙으로 배포 알림 받기</a>
                 </h2><div class="post-meta summary-post-meta"><span class="meta-item post-publish"><span class="svg-icon icon-clock"></span><time class="timeago" datetime="2021-06-23">2021-06-23</time></span></div></div>
         </header>
@@ -193,20 +175,21 @@ REST를 구성하는 스타일 client-server stateless cache uniform interface  
     <div class="post-tags-summary-under-footer"></div>
 </article>
 
-<footer>
-    <nav>
-        <h3 class="display-hidden">Пагинация</h3>
-        <ul class="pagination"><li class="page-item active">
-                    <span class="page-link">
-                        <a href="/">1</a>
-                    </span>
-            </li><li class="page-item ">
-                    <span class="page-link">
-                        <a href="/page/2/">2</a>
-                    </span>
-            </li></ul>
-    </nav>
-</footer></article></div>
+<article itemscope itemtype="http://schema.org/Article">
+    <div class="summary summary-animation" style="margin-bottom:0">
+        <header><div style="padding-top: 20px;padding-left: 20px;padding-right: 20px;"><h2 class="summary-title" itemprop="name headline">
+                    <a href="/posts/mysql-view-definer/" target="_blank">Mysql View Definer</a>
+                </h2><div class="post-meta summary-post-meta"><span class="meta-item post-publish"><span class="svg-icon icon-clock"></span><time class="timeago" datetime="2020-08-13">2020-08-13</time></span></div></div>
+        </header>
+
+        <div class="article-text"><div class="content summary-content">1 2 3 4 5 6 7 8 9 10  https://dev.mysql.com/doc/refman/8.0/en/create-view.html CREATE [OR REPLACE] [ALGORITHM = {UNDEFINED | MERGE | TEMPTABLE}] [DEFINER = user] [SQL SECURITY { DEFINER | INVOKER }] VIEW view_name [(column_list)] AS select_statement [WITH [CASCADED | LOCAL] CHECK OPTION]   django unit test를 진행하는 과정에서 로컬에 세팅한 DB에 있는 view table에서 권한이 없어 select를 못하는 에러가 계속 발생.
+1  _mysql_exceptions.OperationalError: (1449, &#34;The user specified as a definer (&#39;db_user&#39;@&#39;%&#39;) does not exist&#34;)   이유를 모른채 삽질을 하던 중, 생성 쿼리를 뽑아 봄.</div></div>
+    </div>
+
+    <div class="post-tags-summary-under-footer"></div>
+</article>
+
+</article></div>
                 </main><footer class="footer">
         <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.82.0">Hugo</a> | Theme - <a href="https://ublogger.netlify.app/?utm_source=https://hkyeong0703.github.io&utm_medium=footer&utm_campaign=config&utm_term=2.0.1" target="_blank" title="uBlogger 2.0.1">uBlogger</a>
                 </div><div class="footer-line"><i class="svg-icon icon-copyright"></i><span>2021</span></div>

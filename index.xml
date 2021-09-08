@@ -16,16 +16,6 @@
 Terraform이란?HashiCorp사가 만든 오픈 소스 &ldquo;코드형 인프라(IaC)&rdquo; 툴 입니다. 인프라를 안전하고 효율적으로 구축, 변경 및 버전화 할 수 있습니다.
 선언적인 코딩 툴, HCL(HashiCorp Configuration Language)라고 불리는 상위 레벨 구성 언어를 사용하거나 또는 JSON으로 어플리케이션 실행을 위해 원하는 &ldquo;엔드 상태&rdquo; 클라우드 또는 온프레미스 인프라를 기술하도록 합니다. 그런 다음 해당 엔드 상태에 도달하기 위한 계획을 생성하고 인프라를 프로비저닝하기 위한 계획을 실행합니다.]]></description>
 </item><item>
-    <title>Linux_system_infomation</title>
-    <link>https://hkyeong0703.github.io/posts/linux_system_infomation/</link>
-    <pubDate>Tue, 13 Jul 2021 21:00:31 &#43;0900</pubDate>
-    <author>Author</author>
-    <guid>https://hkyeong0703.github.io/posts/linux_system_infomation/</guid>
-    <description><![CDATA[DevOps와 SE를 위한 리눅스 커널이야기 를 오랜만에 다시 꺼내 읽어보며, 정리해보려고한다.
-1장에서는 리눅스 시스템 구성 정보를 확인하는 방법이 나온다. 시스템의 문제점을 분석하고 확인하는데 제일 기본인 현재 시스템을 파악하는데 필요한 방법을 알아보자.
-커널 정보 확인가장 대표적인 방법은 uname 명령을 사용하는 것이다.
-1 2  $ uname -a Linux ip-172-31-27-89 5.4.0-1024-aws #24-Ubuntu SMP Sat Sep 5 06:19:55 UTC 2020 x86_64 x86_64 x86_64 GNU/Linux   dmesg 명령을 통해 몇가지 정보를 더 확인 할 수 있다.]]></description>
-</item><item>
     <title>AWS Amplify Console 슬랙으로 배포 알림 받기</title>
     <link>https://hkyeong0703.github.io/posts/amplify_slack_notification/</link>
     <pubDate>Wed, 23 Jun 2021 20:31:09 &#43;0900</pubDate>
@@ -75,15 +65,5 @@ REST를 구성하는 스타일 client-server stateless cache uniform interface  
     <guid>https://hkyeong0703.github.io/posts/mysql-view-definer/</guid>
     <description><![CDATA[1 2 3 4 5 6 7 8 9 10  https://dev.mysql.com/doc/refman/8.0/en/create-view.html CREATE [OR REPLACE] [ALGORITHM = {UNDEFINED | MERGE | TEMPTABLE}] [DEFINER = user] [SQL SECURITY { DEFINER | INVOKER }] VIEW view_name [(column_list)] AS select_statement [WITH [CASCADED | LOCAL] CHECK OPTION]   django unit test를 진행하는 과정에서 로컬에 세팅한 DB에 있는 view table에서 권한이 없어 select를 못하는 에러가 계속 발생.
 1  _mysql_exceptions.OperationalError: (1449, &#34;The user specified as a definer (&#39;db_user&#39;@&#39;%&#39;) does not exist&#34;)   이유를 모른채 삽질을 하던 중, 생성 쿼리를 뽑아 봄.]]></description>
-</item><item>
-    <title></title>
-    <link>https://hkyeong0703.github.io/posts/%E1%84%86%E1%85%AE%E1%84%8C%E1%85%A6/</link>
-    <pubDate>Mon, 01 Jan 0001 00:00:00 &#43;0000</pubDate>
-    <author>Author</author>
-    <guid>https://hkyeong0703.github.io/posts/%E1%84%86%E1%85%AE%E1%84%8C%E1%85%A6/</guid>
-    <description><![CDATA[60초 내에 Linux 성능 분석 에서 리눅스 명령어를 통해 성능을 분석할 수 있는 방법이 나온다.
-번역과 함께 읽으며 내가 찾아본 내용들을 같이 추후 참고용으로 기록해두려고한다.
-명령어 요약아래 명령어들을 사용해 60초 안에 리눅스 환경에서 CLI를 이용해 어떤 것들을 확인할지 순서대로 알아보자. 일부 명령어는 sysstat 패키지를 설치해야한다.
-1 2 3 4 5 6 7 8 9 10  $ uptime $ dmesg | tail $ vmstat 1 $ mpstat -P ALL 1 $ pidstat 1 $ iostat -xz 1 $ free -m $ sar -n DEV 1 $ sar -n TCP,ETCP 1 $ top   uptime1 2  $ uptime 23:51:26 up 21:31, 1 user, load average - 30.]]></description>
 </item></channel>
 </rss>
