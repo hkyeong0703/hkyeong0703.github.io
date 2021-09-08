@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1"><meta name="robots" content="noodp"/><title>Packer_vs_aws_ec2_image_builder | </title><meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content=""/>
+<meta name="twitter:title" content="Packer_vs_aws_ec2_image_builder"/>
+<meta name="twitter:description" content=""/><meta name="Description" content=""><meta property="og:title" content="Packer_vs_aws_ec2_image_builder" />
+<meta property="og:description" content="Golden image란?골든 이미지는 OS 영역을 포함해 필수 패키지가 설치된 일종의 표준 이미지 개념입니다.
+ 장점  공통 부분을 미리(패키징) 해둠으로써 인스턴스 프로비저닝 시간을 최소화함 새 이미지로부터 새로운 객체들을 생성하기 때문에 보안 관점에서도 좋음.   단점  주기적인 이미지를 다시 만들어야하는 번거로움 예시로, 설치된 패키지 중 특정 버전에 취약점이 발견 시 해당 패키지가 업데이트된 이미지를 다시 만들어 줘야한다. 더 큰 문제는 이미지를 생성한 이후의 작업(테스트,공유)들도 덩달아 공수를 유발한다는 것 또한 부담이다." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://hkyeong0703.github.io/posts/packer_vs_aws_ec2_image_builder/" /><meta property="og:image" content="https://hkyeong0703.github.io/logo.png"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2021-09-08T20:31:02&#43;09:00" />
+<meta property="article:modified_time" content="2021-09-08T20:31:02&#43;09:00" />
+
+<meta name="application-name" content="hkyeong&#39;s blog">
+<meta name="apple-mobile-web-app-title" content="hkyeong&#39;s blog"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+        <link rel="icon" type="image/png" sizes="192x192" href="/android-chrome-192x192.png">
+        <link rel="icon" type="image/png" sizes="512x512" href="/android-chrome-512x512.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://hkyeong0703.github.io/posts/packer_vs_aws_ec2_image_builder/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/lib/prismjs/prism.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Packer_vs_aws_ec2_image_builder",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/hkyeong0703.github.io\/posts\/packer_vs_aws_ec2_image_builder\/"
+        },"genre": "posts","keywords": "terraform, packer, Golden image, ami, aws, Image builder","wordCount":  669 ,
+        "url": "https:\/\/hkyeong0703.github.io\/posts\/packer_vs_aws_ec2_image_builder\/","datePublished": "2021-09-08T20:31:02+09:00","dateModified": "2021-09-08T20:31:02+09:00","description": ""
+    }
+    </script></head>
+    <body data-header-desktop="" data-header-mobile=""><script>(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header>
+    <div class="desktop header" id="header-desktop">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="hkyeong&#39;s blog" class="header-logo logo-svg">hkyeong&#39;s blog</a>
+            </div>
+            <div class="menu">
+                <nav>
+                    <h2 class="display-hidden">Основная навигация</h2>
+                    <ul class="menu-inner"><li>
+                            <a class="menu-item" href="/"> Home </a>
+                        </li><li>
+                            <a class="menu-item" href="/posts/"> Posts </a>
+                        </li></ul>
+                </nav><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <span class="svg-icon icon-moon"></span>
+                </a>
+            </div>
+        </div>
+    </div><div class="mobile header" id="header-mobile">
+        <div class="header-container">
+            <div class="header-wrapper">
+                <div class="header-title">
+                    <a href="/" title="hkyeong&#39;s blog" class="header-logo">hkyeong&#39;s blog</a>
+                </div>
+                <div class="menu-toggle" id="menu-toggle-mobile">
+                    <span></span><span></span><span></span>
+                </div>
+            </div>
+            <div class="menu" id="menu-mobile"><nav>
+                    <h2 class="display-hidden">Основная навигация</h2>
+                    <ul><li>
+                            <a class="menu-item" href="/" title="">Home</a>
+                        </li><li>
+                            <a class="menu-item" href="/posts/" title="">Posts</a>
+                        </li></ul>
+                </nav>
+                <a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <span class="svg-icon icon-moon"></span>
+                </a></div>
+        </div>
+    </div></header><main class="main">
+<div class="container content-article  theme-classic"><div class="toc" id="toc-auto">
+            <div class="toc-title">Contents</div>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div>
+
+    
+    
+    <article>
+    
+
+        <header class="header-post">
+
+            
+
+            
+            <div class="post-title">
+
+                    <div class="post-all-meta">
+                        <nav class="breadcrumbs">
+    <ol>
+        <li><a href="/">Home </a></li><li>Packer_vs_aws_ec2_image_builder</li>
+    </ol>
+</nav>
+                        <h1 class="single-title flipInX">Packer_vs_aws_ec2_image_builder</h1><div class="post-meta summary-post-meta"><span class="post-meta-date meta-item">
+                                <span class="svg-icon icon-clock"></span><time class="timeago" datetime="2021-09-08">2021-09-08</time>
+                            </span><span class="post-meta-words meta-item">
+                                <span class="svg-icon icon-pencil"></span>669 words
+                            </span>
+                            <span class="post-meta-reading meta-item">
+                                <span class="svg-icon icon-stopwatch"></span>4 minutes
+                            </span>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                </header>
+
+        <div class="article-post toc-start">
+
+            <div class="content-block content-block-first content-block-position">
+
+                <div class="post single"><div class="details toc" id="toc-static"  data-kept="true">
+                        <div class="details-summary toc-title">
+                            <span>Contents</span>
+                        </div>
+                        <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#golden-image란">Golden image란?</a>
+      <ul>
+        <li><a href="#비교-대상">비교 대상</a></li>
+      </ul>
+    </li>
+    <li><a href="#packer란">packer란?</a>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#사용하는-이유">사용하는 이유</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#aws-ec2-image-builder란">AWS EC2 Image Builder란?</a>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#사용하는-이유-1">사용하는 이유</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#비교">비교</a>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#재사용성">재사용성</a></li>
+            <li><a href="#테스트검증">테스트/검증</a></li>
+            <li><a href="#os-지원">OS 지원</a></li>
+            <li><a href="#디버깅">디버깅</a></li>
+            <li><a href="#자료의-양">자료의 양</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+                    </div><h2 id="golden-image란" class="headerLink"><a href="#golden-image%eb%9e%80" class="header-mark"></a>Golden image란?</h2><p>골든 이미지는 OS 영역을 포함해 필수 패키지가 설치된 일종의 표준 이미지 개념입니다.</p>
+<ul>
+<li>장점
+<ul>
+<li>공통 부분을 미리(패키징) 해둠으로써 인스턴스 프로비저닝 시간을 최소화함</li>
+<li>새 이미지로부터 새로운 객체들을 생성하기 때문에 보안 관점에서도 좋음.</li>
+</ul>
+</li>
+<li>단점
+<ul>
+<li>주기적인 이미지를 다시 만들어야하는 번거로움 예시로, 설치된 패키지 중 특정 버전에 취약점이 발견 시 해당 패키지가 업데이트된 이미지를 다시 만들어 줘야한다.</li>
+<li>더 큰 문제는 이미지를 생성한 이후의 작업(테스트,공유)들도 덩달아 공수를 유발한다는 것 또한 부담이다.</li>
+</ul>
+</li>
+</ul>
+<p>Golden image 즉 AMI를 최신 상태로 유지하기 위해 인스턴스 업데이트 및 스냅샷 생성 작업을 수동으로 수행하거나 이미지를 유지 관리하는 자동화 스크립트를 빌드해야하는데, 이 과정은 시간 소모적이고 리소스 집약적이며 오류가 발생하기 쉽습니다.</p>
+<p>그래서 이 과정을 자동화된 빌드 파이프라인을 사용하여 OS 이미지를 더 쉽고 빠르게 빌드하고 유지 관리할 수 있는 서비스를 알아보려합니다.</p>
+<h3 id="비교-대상" class="headerLink"><a href="#%eb%b9%84%ea%b5%90-%eb%8c%80%ec%83%81" class="header-mark"></a>비교 대상</h3><ul>
+<li>packer</li>
+<li>AWS Image Builder</li>
+</ul>
+<h2 id="packer란" class="headerLink"><a href="#packer%eb%9e%80" class="header-mark"></a>packer란?</h2><p>&ldquo;하나의 설정 소스로 여러 플랫폼 머신/컨테이너 이미지를 만드는 도구&rdquo;, 가상 머신 이미지를 만들어주는 오픈 소스라고 생각하면된다.</p>
+<p>크게 말해서 IaC(Infrastructure As a Code) 중 Provisioning 도구, 세분화해서 보면 이미지 빌드 도구라고 보면 된다.</p>
+<p>가상 머신의 특정 상태를 저장하는 방법을 사용하지 않고, 이미지 생성 과정에 대한 모든 정보를 코드로 관리한다.</p>
+<p>
+
+
+
+
+<img loading="lazy" decoding="async"
+         class="render-image"
+         src="https://www.packer.io/img/docs/packer-ecosystem-diagram.png"
+         alt="작동 원리"
+         title="packer-ecosystem-diagram.png"
+    /></p>
+<h4 id="사용하는-이유" class="headerLink"><a href="#%ec%82%ac%ec%9a%a9%ed%95%98%eb%8a%94-%ec%9d%b4%ec%9c%a0" class="header-mark"></a>사용하는 이유</h4><ol>
+<li>빠른 인프라 배포
+수초 안에 Packer로 만든 이미지를 사용하여 Terraform으로 배포하게되면 몇초 안에 빠르게 배포 할 수 있다.</li>
+<li>다중 환경에 대한 이식성
+함수와 다양한 변수, 실행 옵션 등을 활용해서 다양한 환경에 맞는 수준 높은 자동화를 구성할 수 있다. AWS뿐만 아니라 여러 Provider에서 사용 가능하다.</li>
+<li>안정성 향상
+Packer에서 설치 및 구성한 안정적인 이미지에서 인스턴스를 프로비저닝하면 버그가 있는 소프트웨어가 배포되지않으므로 안정성이 향상된다.</li>
+<li>개발/프로덕션 환경의 동등성
+여러 플랫폼에 대해 이미지를 동시에 생성하여 개발, 스테이징 및 프로덕션 환경을 최대한 비슷하게 유지 할 수 있다.</li>
+<li>안정적인 Continuous Delivery
+여러 플랫폼에 대한 새 시스템 이미지를 생성 한 후, 시작 및 테스트하여 인프라 변경에 대한 작동을 잘 하는지 확인을 한 후 Terraform을 사용하여 프로덕션 환경에서 이미지로 사용할 수 있다.</li>
+<li>데모 생성
+지속적으로 변화하는 소프트웨어 및 소프트웨어 어플라이언스 또는 일회용 프로덕션 데모를 빠르게 만들 수 있다.</li>
+</ol>
+<h2 id="aws-ec2-image-builder란" class="headerLink"><a href="#aws-ec2-image-builder%eb%9e%80" class="header-mark"></a>AWS EC2 Image Builder란?</h2><p>19년도에 출시된 서비스로 AMI를 관리하고 구축하는 도구로 &ldquo;이미지를 안전하고 최신 상태로 유지하기 위해 자동화된 파이프라인&quot;이라고 표현한다.</p>
+<p>AWS 또는 온프레미스에서 사용하기 위해 가상 머신 및 컨테이너 이미지의 구축, 테스트 및 배포를 간소화한다.</p>
+<p>Image Builder를 사용하면 간단한 그래픽 인터페이스, 기본 자동화 및 AWS 제공 보안 설정을 통해 이미지를 최신 상태로 유지하는 작업들을 수동으로 진행하거나 자체 자동화 파이프 라인을 구축하지 않아도된다.</p>
+<p>이미지를 생성, 저장 및 공유하는 데 사용되는 기본 AWS 리소스 비용 외에는 무료로 제공된다.</p>
+<p>
+
+
+
+
+<img loading="lazy" decoding="async"
+         class="render-image"
+         src="https://d1.awsstatic.com/re19/image-builder/Product-Page-Diagram_Image-Factory.cbf8db591ca6de1c5d9149f3cd6ccfe6c6a64f33.png"
+         alt="작동 원리"
+         title="Product-Page-Diagram_Image-Factory.cbf8db591ca6de1c5d9149f3cd6ccfe6c6a64f33.png"
+    /></p>
+<h4 id="사용하는-이유-1" class="headerLink"><a href="#%ec%82%ac%ec%9a%a9%ed%95%98%eb%8a%94-%ec%9d%b4%ec%9c%a0-1" class="header-mark"></a>사용하는 이유</h4><ol>
+<li>IT 생산성 향상</li>
+<li>보다 간편한 보안 유지
+필수 구성 요소만으로 이미지를 만들 수 있어 보안 취약점 노출을 줄일 수 있다.  보안 패치가 제공되면 자동으로 패치한다.
+AWS 제공 보안 정책 또는 사용자 지정 보안 정책을 이미지에 적용할 수 있다.</li>
+<li>가상 머신 및 컨테이너 이미지 모두를 구축하고 테스트하기 위한 일관된 워크플로우
+공통 워크 플로우를 사용하여 한 곳에서 최신 가상 머신 및 컨테이너 이미지를 구축하고 보안하며 테스트하는 위치를 제공</li>
+<li>기본 제공 검증 지원
+이미지를 사용하기 전에 AWS 제공 테스트 및 자체 테스트를 통해 이미지의 기능, 호환성 및 보안 규정 준수 여부를 쉽게 검증할 수 있다.</li>
+<li>AWS 계정에서 이미지 공유 간소화
+AWS Resource Access Manager, AWS Organizations 및 Amazon ECR과 통합하여 AWS 계정에서 자동화 스크립트, 레시피 및 이미지를 공유할 수 있다.</li>
+</ol>
+<h2 id="비교" class="headerLink"><a href="#%eb%b9%84%ea%b5%90" class="header-mark"></a>비교</h2><h4 id="재사용성" class="headerLink"><a href="#%ec%9e%ac%ec%82%ac%ec%9a%a9%ec%84%b1" class="header-mark"></a>재사용성</h4><p>Packer는 AWS의 AMI 뿐만아니라 다양한 클라우드 서비스를 위한 이미지를 생성 할 수 있지만,  AWS EC2 Image Builder는 당연하겠지만 AWS만 지원한다.</p>
+<h4 id="테스트검증" class="headerLink"><a href="#%ed%85%8c%ec%8a%a4%ed%8a%b8%ea%b2%80%ec%a6%9d" class="header-mark"></a>테스트/검증</h4><p>AWS EC2 Image Builder는 빌드 프로세스에서 테스트를 통합 할 수 있다. 테스트 프레임워크를 사용하면 AWS 리전에 배포하기 전에 OS 업데이트로 인해 발생하는 비호환성을 파악할 수 있다. AWS 제공 테스트 및 자체 테스트를 모두 실행하여 테스트 진행 시 테스트 실행, 결과 및 게이트 다운스트림 작업을 관리할 수 있다.</p>
+<p>Packer는 Codepipeline에서 추가 단계를 설정해야된다.</p>
+<h4 id="os-지원" class="headerLink"><a href="#os-%ec%a7%80%ec%9b%90" class="header-mark"></a>OS 지원</h4><p>EC2 Image Builder는 SSM을 사용하여 모든 명령을 실행하므로 이 기본 AMI에 SSM 에이전트가 설치되어 있어야 하지만, Packer는 모든 주요 Linux 기본 AMI를 사용할 수 있으며 SSH/WinRM을 사용하여 실행 중인 인스턴스와 통신한다.</p>
+<h4 id="디버깅" class="headerLink"><a href="#%eb%94%94%eb%b2%84%ea%b9%85" class="header-mark"></a>디버깅</h4><p>Packer는 콘솔에 모든 로그를 출력한다. &ndash;debug 플래그를 사용하여 더 많은 로깅을 활성화 시킬 수 있다.</p>
+<p>EC2 Image Builder는 Cloudwatch Logs에서 파이프라인 프로세스의 모든 로깅을 출력한다. 이를 통해 여러 실행에 대한 로그도 확인이 가능하고, 필터링을 사용하여 트리거를 추가할 수 있다.</p>
+<h4 id="자료의-양" class="headerLink"><a href="#%ec%9e%90%eb%a3%8c%ec%9d%98-%ec%96%91" class="header-mark"></a>자료의 양</h4><p>두 가지를 조사하고 간단하게 AMI를 만들어보면서 참고할 자료의 양이 Packer가 훨씬 많았다. AWS EC2 Image Builder 경우 공식 문서 외엔 거의 참고 할 자료가 없고, 공식 문서 또한 없는 정보들이 많다.</p>
+</div><footer>
+                        <div class="post">
+
+
+<div class="post-share"></div>
+<div class="post-tags"><a href="/tags/terraform/" class="tag">terraform</a><a href="/tags/packer/" class="tag">packer</a><a href="/tags/golden-image/" class="tag">Golden image</a><a href="/tags/ami/" class="tag">ami</a><a href="/tags/aws/" class="tag">aws</a><a href="/tags/image-builder/" class="tag">Image builder</a></div></div>
+                </footer></div>
+        <div id="toc-final"></div>
+        </div>
+
+    
+    </article>
+    </div>
+
+</main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.82.0">Hugo</a> | Theme - <a href="https://ublogger.netlify.app/?utm_source=https://hkyeong0703.github.io&utm_medium=footer&utm_campaign=config&utm_term=2.0.1" target="_blank" title="uBlogger 2.0.1">uBlogger</a>
+                </div><div class="footer-line"><i class="svg-icon icon-copyright"></i><span>2021</span></div>
+        </div>
+    </footer></div>
+
+        <aside id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="svg-icon icon-arrow-up"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="svg-icon icon-comments-fixed"></i>
+            </a>
+        </aside><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="stylesheet" href="/lib/katex/copy-tex.min.css"><script src="/lib/smooth-scroll/smooth-scroll.min.js"></script><script src="/lib/clipboard/clipboard.min.js"></script><script src="/lib/katex/katex.min.js"></script><script src="/lib/katex/auto-render.min.js"></script><script src="/lib/katex/copy-tex.min.js"></script><script src="/lib/katex/mhchem.min.js"></script><script>window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":10},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false}};</script><script src="/js/theme.min.js"></script></body>
+</html>
