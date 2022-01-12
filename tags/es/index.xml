@@ -1,0 +1,17 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>es - Tag - hkyeong&#39;s blog</title>
+        <link>https://hkyeong0703.github.io/tags/es/</link>
+        <description>es - Tag - hkyeong&#39;s blog</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Tue, 09 Nov 2021 20:51:28 &#43;0900</lastBuildDate><atom:link href="https://hkyeong0703.github.io/tags/es/" rel="self" type="application/rss+xml" /><item>
+    <title>Elastic Search (1)</title>
+    <link>https://hkyeong0703.github.io/posts/es/</link>
+    <pubDate>Tue, 09 Nov 2021 20:51:28 &#43;0900</pubDate>
+    <author>Author</author>
+    <guid>https://hkyeong0703.github.io/posts/es/</guid>
+    <description><![CDATA[ElasticSearch란?&ldquo;루씬(Lucene)이라는 검색 라이브러리를 기반으로 검색 기능을 제공하는 오픈 소스 검색 엔진이다.&quot;
+  아파치 루씬 기반 아파치 루씬 은 자바로 개발된 검색 서비스용 라이브러리. 루씬은 전문 텍스트 검색(Full text search)에 특화되어 있어 문서가 색인될 때부터 검색 가능해질 때까지의 대기시간이 매우 짧다는 장점이 있다.
+  Restful API REST API 형태로 조작할 수 있다. 검색 및 분석 결과를 API 형태로 제공한다. 어플리케이션에서 쉽게 활용할 수 있는 장점이 있다.
+  JSON 기반 JSON 형으로 모든 요청 및 응답 문서를 표현한다.]]></description>
+</item></channel>
+</rss>
