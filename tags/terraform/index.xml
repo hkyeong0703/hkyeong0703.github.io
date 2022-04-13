@@ -3,7 +3,17 @@
         <title>terraform - Tag - hkyeong&#39;s blog</title>
         <link>https://hkyeong0703.github.io/tags/terraform/</link>
         <description>terraform - Tag - hkyeong&#39;s blog</description>
-        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Wed, 14 Jul 2021 22:01:24 &#43;0900</lastBuildDate><atom:link href="https://hkyeong0703.github.io/tags/terraform/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Wed, 13 Apr 2022 20:51:28 &#43;0900</lastBuildDate><atom:link href="https://hkyeong0703.github.io/tags/terraform/" rel="self" type="application/rss+xml" /><item>
+    <title>프로덕션 수준의 인프라는 어떤 것들을 갖춰야할까</title>
+    <link>https://hkyeong0703.github.io/posts/production_infra/</link>
+    <pubDate>Wed, 13 Apr 2022 20:51:28 &#43;0900</pubDate>
+    <author>Author</author>
+    <guid>https://hkyeong0703.github.io/posts/production_infra/</guid>
+    <description><![CDATA[오늘 내용은 Terrafrom Up&amp;Running(테라폼 업앤러닝) 책의 6장 내용을 바탕으로 정리하였다.
+인프라 란?기본적으로 개발이나 서비스를 하기 위에 물리적으로 구성된 Network, DB, Server, Cloud 등을 의미한다. 즉, 데이터를 주고받기 위한 물리적 장비를 의미한다.
+구성요소
+ 하드웨어 (HW)  서버, 데이터 센터, 개인용 컴퓨터, 라우터, 스위치 등 기타 장비가 포함   운영체제 (OS)  각종 하드웨어적인 자원과 소프트웨어적인 자원을 효율적으로 운영 관리함으로써 사용자가 시스템을 이용하는데 편리함을 제공하는 시스템 소프트웨어   네트워크 (Network)  몇 개의 독립적인 장치가 적절한 영역 내에서 적당히 빠른 속도로 물리적 통신 채널을 통하여 서로가 직접 통신할 수 있도록 지원해주는 데이터 통신 체계   미들웨어 (Middleware)  Web Server, DBMS 등 운영체제와 비지니스를 처리하는 애플리케이션의 중간에서 도움을 주는 소프트웨어    프로덕션 수준의 인프라 란?]]></description>
+</item><item>
     <title>Terraform용 cdk를 이용하여 Go로 AWS 인프라 구축 시작하기</title>
     <link>https://hkyeong0703.github.io/posts/terraform_cdk_go/</link>
     <pubDate>Wed, 14 Jul 2021 22:01:24 &#43;0900</pubDate>
