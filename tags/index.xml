@@ -3,7 +3,28 @@
         <title>Tags - Tag - hkyeong&#39;s blog</title>
         <link>https://hkyeong0703.github.io/tags/</link>
         <description>Tags - Tag - hkyeong&#39;s blog</description>
-        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Wed, 12 Jan 2022 20:51:28 &#43;0900</lastBuildDate><atom:link href="https://hkyeong0703.github.io/tags/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Wed, 13 Apr 2022 20:51:28 &#43;0900</lastBuildDate><atom:link href="https://hkyeong0703.github.io/tags/" rel="self" type="application/rss+xml" /><item>
+    <title>devops</title>
+    <link>https://hkyeong0703.github.io/tags/devops/</link>
+    <pubDate>Wed, 13 Apr 2022 20:51:28 &#43;0900</pubDate>
+    <author>Author</author>
+    <guid>https://hkyeong0703.github.io/tags/devops/</guid>
+    <description><![CDATA[]]></description>
+</item><item>
+    <title>infra</title>
+    <link>https://hkyeong0703.github.io/tags/infra/</link>
+    <pubDate>Wed, 13 Apr 2022 20:51:28 &#43;0900</pubDate>
+    <author>Author</author>
+    <guid>https://hkyeong0703.github.io/tags/infra/</guid>
+    <description><![CDATA[]]></description>
+</item><item>
+    <title>Production</title>
+    <link>https://hkyeong0703.github.io/tags/production/</link>
+    <pubDate>Wed, 13 Apr 2022 20:51:28 &#43;0900</pubDate>
+    <author>Author</author>
+    <guid>https://hkyeong0703.github.io/tags/production/</guid>
+    <description><![CDATA[]]></description>
+</item><item>
     <title>cluster</title>
     <link>https://hkyeong0703.github.io/tags/cluster/</link>
     <pubDate>Wed, 12 Jan 2022 20:51:28 &#43;0900</pubDate>
@@ -51,27 +72,6 @@
     <pubDate>Wed, 14 Jul 2021 22:01:24 &#43;0900</pubDate>
     <author>Author</author>
     <guid>https://hkyeong0703.github.io/tags/go/</guid>
-    <description><![CDATA[]]></description>
-</item><item>
-    <title>hashicorp</title>
-    <link>https://hkyeong0703.github.io/tags/hashicorp/</link>
-    <pubDate>Wed, 14 Jul 2021 22:01:24 &#43;0900</pubDate>
-    <author>Author</author>
-    <guid>https://hkyeong0703.github.io/tags/hashicorp/</guid>
-    <description><![CDATA[]]></description>
-</item><item>
-    <title>terraform</title>
-    <link>https://hkyeong0703.github.io/tags/terraform/</link>
-    <pubDate>Wed, 14 Jul 2021 22:01:24 &#43;0900</pubDate>
-    <author>Author</author>
-    <guid>https://hkyeong0703.github.io/tags/terraform/</guid>
-    <description><![CDATA[]]></description>
-</item><item>
-    <title>alarm</title>
-    <link>https://hkyeong0703.github.io/tags/alarm/</link>
-    <pubDate>Wed, 23 Jun 2021 20:31:09 &#43;0900</pubDate>
-    <author>Author</author>
-    <guid>https://hkyeong0703.github.io/tags/alarm/</guid>
     <description><![CDATA[]]></description>
 </item></channel>
 </rss>
